@@ -1,0 +1,366 @@
+body{
+	
+}
+.corp{
+	width:100%;
+	height:auto;
+}
+
+
+
+/*************************La partie header************************************************/
+header > div{
+	height:100px;
+}
+header{
+	text-align:center;
+	margin-bottom:10px;
+	background-color:rgba(0,200,0,0.2);
+}
+#nav{
+	position:sticky;
+	top:50px;
+	z-index:10;
+}
+.sociaux{
+	position:sticky;
+	top:0px;
+	z-index:1;
+	height:50px;
+	background-color:#000;
+	color:#FFF;
+}
+.sociaux div{
+	position:right;
+	display:inline-block;
+}
+.sociaux a{
+	color:#FFF;
+}
+li:hover > ul{
+	display:block;
+}
+
+
+/**********************La partie section********************************/
+section >div >div{
+	height:300px;
+}
+.pouletPret div{
+	height:100px;
+}
+section .pouletPret h4{
+	background-color:green;
+	color:yellow;
+	margin-bottom:0px;
+	text-align:center;
+}
+section  .pouletPret p{
+	background-color:rgba(0,0,0,0.6);
+	color:orange;
+}
+section .pouletPret > div{
+	border-top:5px inset green;
+}
+.produit{
+	border:1px inset green;
+}
+.description{
+	min-height:10px;
+	text-align:center;
+	background-color:rgba(0,200,0,0.5);
+}
+.plusDeDetails{
+	height:auto;
+	
+}
+.differentsProduits{
+	margin-top:10px;
+}
+.differentsProduits a{
+	color:black;
+}
+section div:hover {
+	text-decoration:none;
+}
+
+/****************La partie footer**********************/
+
+footer{
+	margin-top:10px;
+	/*background-color:rgba(100,100,100,0.3);*/
+}
+footer table{
+	width:100%;
+	background-color:rgba(100,100,100,0.3);
+}
+footer table tr td img{
+	width:50px;
+}
+footer table td{
+	text-align:center;
+}
+footer table thead th{
+	font-size:20px;
+	text-align:center;
+}
+
+/**********************La partie poulets de chair morts***************************************/
+
+.pouletMortChair .image{
+	max-height:150px;
+	border:1px inset green;
+	border-bottom:none;
+}
+legend{
+	margin-left:10px;
+	margin-top:20px;
+}
+.pouletMortChair .PCongele .prix{
+	font-size:125%;
+	text-align:center;
+	color:red;
+	height:auto;
+	background-color:rgba(0,255,0,0.5);
+	margin-bottom:10px;
+}
+.pouletMortChair .PCongele .prix .ajoutPanier, .voirProduit .Ajouter .ajoutPanier{
+	font-weight:bold;
+	height:30;
+}
+/***********************La partie oeufs**************************/
+.oeufs{
+	margin:10px;
+}
+.oeufs .image{
+	
+	max-height:160px;
+}
+.oeufs .cartonPrix{
+	text-align:center;
+	height:50px;
+}
+.oeufs .col-xs-6{
+	height:auto;
+}
+
+/**************************La partie poussins*****************************/
+
+.poussins .poussinsImage{
+	height:160px;
+}
+.poussins .prix{
+	height:50px;
+	margin-bottom:20px;
+}
+
+img{
+	border-radius:40%;
+}
+
+/********************La partie panier***********************/
+
+.panier, .panier th, .panier td, .panier thead{
+		border:5px outset black;
+		text-align:center;
+	}
+.panier{
+		margin:auto;
+		width:70%;
+		max-width:800px
+	}
+.panier button{
+		width:100%;
+	}
+
+table.facture {
+  border: 2px solid #000000;
+  text-align:center;
+}
+table.facture td, table.facture th {
+  border: 2px solid #AAAAAA;
+}
+table.facture thead {
+  background: #DDDDDD;
+}
+table.facture thead th {
+  font-weight: normal;
+}
+table.facture tfoot {
+  font-weight: bold;
+}
+/****************************La partie voir produits********************************/
+
+.voirProduit{
+			margin:auto;
+			margin-top:50px;
+			max-width:700px;
+			border:1px solid black;
+			height:auto;
+		}
+		
+		.voirProduit div{
+			border:1px solid black;
+		}
+		
+		.voirProduit .voirImage, .voirProduit .voirDescript{
+			height:300px;
+		}
+		
+		.voirProduit .Ajouter, .voirProduit .Retour{
+			height:40px;
+		}
+		.voirProduit button{
+			width:100%;
+		}
+		
+.ajoutPanier{
+	font-weight:bold;
+}
+/********************Formulaires***********************/
+	.form1{
+		margin:auto;
+		max-width:600px;
+		width:100%;
+		height:auto;
+	}
+	.form1 .nb{
+		max-width:550px;
+		height:100px;
+	}
+	.form1 .form{
+		max-width:550px;
+		height:auto;
+		
+	}
+	.form1 .form fieldset{
+		background-color:RGBa(24,242,16,0.2);
+	}
+	table{
+		margin:auto;
+	}
+	
+	.form1 .mesge{
+		color:red;
+		font-size:50px;
+	}
+	
+	.passDifferent{
+		display:none;
+		text-align:center;
+		color:red;
+		font-size:20px;
+	}
+
+label {
+	margin: 10px;
+}
+
+input {
+	border-radius: 6px;
+}
+
+.form .field a{
+	text-decoration: none;
+}
+
+
+/********************************La partie responsive***************************/
+
+@media screen and (max-width:500px){
+	.pouletsDeChairsMorts .image, .oeufs .image, .poussins .poussinsImage, section .produit{
+		max-height:200px;
+	}
+	img{
+	border-radius:20%;
+		}
+	section .slidee{
+	height:200px;
+		}
+	.sociaux{
+		height:60px;
+	}
+}
+@media screen and (max-width:700px){
+	.sociaux{
+		height:50px;
+	}
+}
+
+@media screen and (min-width:500px){
+	.pouletsDeChairsMorts .image, .oeufs .image, .poussins .poussinsImage, .section > .differentsProduits > a .produit{
+		min-height:180px;
+	}
+	
+	.corp{
+		margin:auto;
+		max-width:850px;
+		border:1px solid black;
+	}
+}
+
+@media screen and (min-width:993px){
+	.section > .differentsProduits > a .produit{
+		max-height:120px;
+	}
+	.differentsProduits .description{
+		height:50px;
+	}
+}
+
+/*************************************Les effets du style******************************************/
+
+.PCongele .image:hover, .oeufs .image:hover, .poussins .PCongele .image:hover, .section > .differentsProduits > a .produit:hover{
+		ackground-color:#777777;
+		box-shadow:1px 1px 5px 1px;
+	}
+	
+	
+	a{
+		text-decoration:none;
+	}
+/*******************************La partie admin****************/
+
+	.tableCom, .tableCli{
+		margin:auto;
+	}
+	.tableCom th, .tableCom td, .tableCli th, .tableCli td{
+		text-align:center;
+		border:2px solid black;
+		width:100px;
+		height:50px;
+	}
+	
+	.tableCom, .tableCli {
+		border: 1px solid #1C6EA4;
+		background-color: #EEEEEE;
+		width: 100%;
+		text-align: left;
+		border-collapse: collapse;
+	}
+
+	.tableCom td, table.tableCom th, .tableCli td, table.tableCli th {
+		border: 1px solid #AAAAAA;
+		padding: 3px 2px;
+	}
+	.tableCom tr:nth-child(even), .tableCli tr:nth-child(even) {
+		background: #D0E4F5;
+	}
+	.tableCom thead, .tableCli thead {
+		background: #1C6EA4;
+		background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+		background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+		background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+		border-bottom: 2px solid #444444;
+	}
+
+	.tableCom thead th, .tableCli thead th {
+		font-size: 15px;
+		font-weight: bold;
+		color: #FFFFFF;
+		border-left: 2px solid #D0E4F5;
+	}
+	
+	.tableCom thead th:first-child, .tableCli thead th:first-child {
+		border-left: none;
+	}
