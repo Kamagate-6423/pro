@@ -1,6 +1,15 @@
 
 
-<?php require('header.php') ?>
+<?php require('header.php');
+
+	if(!empty($_SESSION['client']['idClien'])){
+	
+	include('voirCommande.php');
+	
+}else{
+ ?>
+
+<!--fin commande-->
 
 	<h1 style="text-align:center">Votre panier</h1>
 	
@@ -65,4 +74,7 @@
 			<tr><td><a href='javascript:history.back()'> <button>retour</button> </a></td><td><a href="../controller/requetePanier.php?dePanier=111" class="dePanier" ><button class="btn-primary confirmePanier" ><strong class="confirmPanier">Commander</strong></button></a></td></tr>
 		</table>
 		
-		<?php include('footer.php') ?>
+		<?php
+
+	}
+		include('footer.php') ?>

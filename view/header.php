@@ -56,10 +56,13 @@
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 " style="padding-right:0px;"> 
 				<div class="col-sm-7 col-md-6 col-lg-6"><a href="../view/panier.php" class="btn btn-warning" 			style="height:30px; font-weight:bold" ><span class="glyphicon  glyphicon-shopping-cart"></span> Panier</a>:<span id="compt"><?=$panier->compt()?><span style="color:orange" >Kg</span></span>
 				</div>
-				<div class="col-sm-5 col-md-6 col-lg-6">Total:<span id="total"><?=$panier->total()?>					 	<span style="color:orange">fcfa</span></span>
+				<div class="col-sm-5 col-md-6 col-lg-6">Total:<span id="total"><?=$panier->total()?>					 	<span style="color:orange">fcfa</span></span></br>
+						<a href="../view/panier.php" class="btn btn-primary">Voir votre commande</a>
+						
 				</div>
 			</div>
 		</div>
+
 		   <header class="container-fluid">
 				<div class="hidden-xs col-sm-2 col-md-3 col-lg-2"><img src="../public/image/logo.jpg" class="img-responsive"> </div>
 				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-6"><h1>De La Chair Fraîche</h1></div>
