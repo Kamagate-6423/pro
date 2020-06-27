@@ -38,6 +38,9 @@
 	
 	
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+   
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <script type="text/javascript" src="../public/js/jquery-3.4.1.js"></script>
 	
 	
@@ -49,6 +52,8 @@
     <script src="../public/js/bootstrap.js"></script>
 	
 	<script type="text/javascript" src="../public/js/alertify.min.js"></script>
+	<script type="text/javascript" src="../public/js/jquery-confirm.js"></script>
+	
 	
   </body>
 </html>
