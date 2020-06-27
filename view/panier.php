@@ -2,11 +2,24 @@
 
 <?php require('header.php');
 
-	if(!empty($_SESSION['client']['idClien'])){
+ $idCli="";
+ 
+ if(isset($_SESSION['client']['idClien'])){
+	 
+ $idCli=$_SESSION['client']['idClien'];}
+
+	$reqInfo='SELECT id_cli
+				FROM commandes WHERE id_cli = ?';
 	
-	include('voirCommande.php');
+	$variableInfo=array($idCli);
 	
-}else{
+	$req=$bdd->requetes($reqInfo,$variableInfo);
+	$siComExiste=$req->fetch();
+	
+	if(!empty($_SESSION['client']['idClien'])&&!empty($siComExiste)){
+		include('voirCommande.php');
+	
+	}else{
  ?>
 
 <!--fin commande-->
