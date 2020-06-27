@@ -4,11 +4,6 @@ include('bdd.php');
 	$bdd=new BDD();
 	$id=$_GET['id_com'];
 	
-	 	//com.lieux_liv lieux_liv,
-				//com.date_liv date_liv, com.heure_liv heure_liv, 
-				//com.keys_pro keys, com.qtes_pro qtes, 
-				//com.prix_total prixTotal
-	
 	$reqInfo='SELECT cli.id_cli id_cli, cli.nom_cli nom,
 				cli.prenom_cli prenom, cli.tel_cli tel, 
 				cli.email_cli email, com.id_cli comIdCli,

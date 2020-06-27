@@ -115,7 +115,7 @@
 							</tfoot>
 						</table>
 						
-				<form method="post" action="">
+				<form method="post" action="" class="annuleForm">
 				<input type="nember" name="idCli" value="<?=$_SESSION['client']['idClien']?>" class="anInput">
 				<button type="submit" style="text-align:center" class="btn btn-danger annuleCom">Annuler votre commande</button>
 				</form>
@@ -124,4 +124,6 @@
 			}
 	  
 	}
+	
+	
 	?>
