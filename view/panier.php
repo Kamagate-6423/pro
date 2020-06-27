@@ -4,9 +4,9 @@
 
  $idCli="";
  
- if(isset($_SESSION['client']['idClien'])){
-	 
- $idCli=$_SESSION['client']['idClien'];}
+	if(isset($_SESSION['client']['idClien'])){
+		$idCli=$_SESSION['client']['idClien'];
+	}
 
 	$reqInfo='SELECT id_cli
 				FROM commandes WHERE id_cli = ?';
@@ -16,9 +16,8 @@
 	$req=$bdd->requetes($reqInfo,$variableInfo);
 	$siComExiste=$req->fetch();
 	
-	if(!empty($_SESSION['client']['idClien'])&&!empty($siComExiste)){
+	if(!empty($_SESSION['client']['idClien'])&&isset($siComExiste['id_cli'])){
 		include('voirCommande.php');
-	
 	}else{
  ?>
 
@@ -90,4 +89,5 @@
 		<?php
 
 	}
+	
 		include('footer.php') ?>
