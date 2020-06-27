@@ -26,6 +26,19 @@ $(function(){
 			$(".dePanier").removeAttr("href");
 			$(".confirmPanier").text("actualiser d'abord");
 		});
+		
+	// Supprimer la commander
+	
+	$(".annuleCom").on('click',function(event){
+		if(confirm("Souhaitez vous annuler votre commande?")){
+			location.href='../index.php';
+		}else{
+			//$(".anInput").attr('value','');
+			event.preventDefault();
+		}
+	})
+		
+
 			
 	//Pour alerter une stock epuisé
 			$(".ajoutPanierNon").click(function(event){
