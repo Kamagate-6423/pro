@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/bootstrap.css">
 	<link rel="stylesheet" href="../public/css/alertify.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 	<link rel="stylesheet" href="../public/css/default">
 	
 	
@@ -57,7 +58,28 @@
 				<div class="col-sm-7 col-md-6 col-lg-6"><a href="../view/panier.php" class="btn btn-warning" 			style="height:30px; font-weight:bold" ><span class="glyphicon  glyphicon-shopping-cart"></span> Panier</a>:<span id="compt"><?=$panier->compt()?><span style="color:orange" >Kg</span></span>
 				</div>
 				<div class="col-sm-5 col-md-6 col-lg-6">Total:<span id="total"><?=$panier->total()?>					 	<span style="color:orange">fcfa</span></span></br>
-						<a href="../view/panier.php" class="btn btn-primary">Voir votre commande</a>
+				<?php  
+			$idCli="";
+		if(isset($_SESSION['client']['idClien'])){
+		$idCli=$_SESSION['client']['idClien'];
+	}
+
+	$reqInfo='SELECT id_cli
+				FROM commandes WHERE id_cli = ?';
+	
+	$variableInfo=array($idCli);
+	
+	$req=$bdd->requetes($reqInfo,$variableInfo);
+	$siComExiste=$req->fetch();
+	
+	if(!empty($_SESSION['client']['idClien'])&&isset($siComExiste['id_cli'])){
+			?>
+						<a href="../view/panier.php" class="btn btn-primary ">Voir votre commande</a>
+	<?php  }else{ 
+	?>
+				<a href="../view/panier.php" class="btn btn-primary ">Commander</a>
+	<?php
+	} ?>
 						
 				</div>
 			</div>
