@@ -1,5 +1,5 @@
 <fieldset><legend>Supprimer un produit</legend>
-	<form method="post" action="requeteSupprimerPro.php" enctype="multipart/form-data" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+	<form method="post" action="requetesSupprimer.php" enctype="multipart/form-data" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 		<table>
 			<tr>
 				<td><label for="identifiant">Identifiant</label></td>
