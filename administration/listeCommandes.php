@@ -32,6 +32,7 @@
 			<th>QUANTITES</th>
 			<th>SOMMES</th>
 			<th>VOIR FACTURE</th>
+			<th>Supprimer</th>
 		<tr/>
 	</thead>
 	<tbody>
@@ -48,6 +49,9 @@
 			<td><?=array_sum($pQte) ?> Kg</td>
 			<td><?=$donnee['prixTotal'] ?> fcfa</td>
 			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
+		<form method="post" action="requetesSupprimer.php">
+			<td><input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden"><button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+		</form>
 		</tr>
 	<?php	} 	
 	$req->closeCursor();
