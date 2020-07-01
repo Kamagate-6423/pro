@@ -11,33 +11,24 @@
 			  </ol>
 
 			  <!-- Wrapper for slides -->
-			  <div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<a href="#">
-						<img src="../public/image/pouletAfric.jpg" class="img-responsive" alt="...">
-						<div class="carousel-caption">
-						Des poules africains de qualité, grandir de façon naturelle
-						</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#">
-						<img src="../public/image/images2.jpg" alt="..." class="img-responsive">
-						<div class="carousel-caption">
-							Des poules africains de qualité, grandir de façon naturelle
-						</div>
-					</a>
-				</div>
-				<div class="item">
-					<a href="#">	
-						<img src="../public/image/images3.jpg" alt="..." class="img-responsive">
-						<div class="carousel-caption">
-							Des poules africains de qualité, grandir de façon naturelle
-						</div>
-					</a>
-				</div>
-			  </div>
 
+			<div class="carousel-inner" role="listbox">
+<?php
+				$reqAc1=requete(1,3);
+
+				while($donneeAc1=$reqAc1->fetch()){
+?>
+			  
+				<div class="item <?=$donneeAc1['stock']?>">
+					<a href="<?=$donneeAc1['chemin_desti']?>">
+						<img src="../public/image/<?=$donneeAc1['image_pro']?>" class="img-responsive" alt="...">
+						<div class="carousel-caption">
+						<?=$donneeAc1['info_pro']?>
+						</div>
+					</a>
+				</div>
+<?php				} ?>
+			</div>
 			  <!-- Controls -->
 			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -72,64 +63,24 @@
 			<!--Enfffffinn-->
 		</section>
 		<section class="section">
+<?php	
+		
+		
+		$reqAc2=requete(4,12);
+		
+		while($donneeAc2=$reqAc2->fetch()){
+?>
+		
 			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
 				<a href="../index/index.php?section=congeletC">
-					<div class="produit"><img src="../public/image/chair.jpg" class="img-responsive" alt="Poulets prêt à cuire"></div>
-					<div class="description"><p>Des poulets dont le prix vari selon le poid </p></div>
+					<div class="produit"><img src="../public/image/<?=$donneeAc2['image_pro']?>" class="img-responsive" alt="Poulets prêt à cuire"></div>
+					<div class="description"><p><?=$donneeAc2['info_pro']?> </p></div>
 					<div class="plusDeDetails">Voir plus</div>
 				</a>
 			</div>
-			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
-				<a href="../index/index.php?section=congeletM">
-					<div class="produit"><img src="../public/image/pattes.jpg" class="img-responsive" alt="Poulets Grillets"></div>
-					<div class="description"><p>Des poulets dont le prix vari selon le poid </p></div>
-					<div class="plusDeDetails">Voir plus</div>
-				</a>
-			</div>
-			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
-				<a href="../index/index.php?section=chairs">
-					<div class="produit"><img src="../public/image/chairV.jpg" class="img-responsive" alt="Poulets de chair"></div>
-					<div class="description"><p>Des poulets dont le prix vari selon le poid </p></div>
-					<div class="plusDeDetails">Voir plus</div>
-				</a>
-			</div>
-			
-			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
-				<a href="../index/index.php?section=pondeuses">
-					<div class="produit"><img src="../public/image/pondeuse1.jpg" class="img-responsive" alt="Pondeuses"></div>
-					<div class="description"><p>Des poulets dont le prix vari selon le poid </p></div>
-					<div class="plusDeDetails">Voir plus</div>
-				</a>
-			</div>
-			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
-				<a href="../index/index.php?section=cokeles">
-					<div class="produit"><img src="../public/image/coquelet.jpg" class="img-responsive" alt="Coquelet"></div>
-					<div class="description"><p>Des poulets dont le prix vari selon le poid </p></div>
-					<div class="plusDeDetails">Voir plus</div>
-				</a>
-			</div>
-			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
-				<a href="../index/index.php?section=africains">
-					<div class="produit"><img src="../public/image/africainV.jpg" class="img-responsive" alt="Poulets Africains"></div>
-					<div class="description"><p>Des poulets dont le prix vari selon le poid </p></div>
-					<div class="plusDeDetails">Voir plus</div>
-				</a>
-			</div>
-			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
-				<a href="../index/index.php?section=poussins">
-					<div class="produit"><img src="../public/image/poussin2.jpg" class="img-responsive" alt="Poussins" style="overflow:auto;"></div>
-					<div class="description"><p>Des poulets dont le prix vari selon le poid </p></div>
-					<div class="plusDeDetails">Voir plus</div>
-				</a>
-			</div>
-			
-			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
-				<a href="../index/index.php?section=oeufs">	
-					<div class="produit"><img src="../public/image/oeuf60_1.jpg" class="img-responsive" alt="Oeufs"></div>
-					<div class="description"><p>Des poulets dont le prix vari selon le poid  </p></div>
-					<div class="plusDeDetails">Voir plus</div>
-				</a>
-			</div>
+<?php
+		}
+?>
 		</section>
 	
 	</div>

@@ -11,7 +11,7 @@ include('bdd.php');
 	function requete($debut,$fin)
 		{
 			$bdd= new BDD();
-			$reqSql='SELECT id_pro, image_pro, nom_pro, inter_poids, prix, stock, info_pro FROM produits WHERE id_pro>=? AND id_pro<=? ORDER BY id_pro';
+			$reqSql='SELECT id_pro, image_pro, nom_pro, chemin_desti, inter_poids, prix, stock, info_pro, date_modif FROM produits WHERE id_pro>=? AND id_pro<=? ORDER BY id_pro';
 			$reqVariable=array($debut,$fin);
 			$req = $bdd->requetes($reqSql,$reqVariable);
 			
@@ -30,7 +30,7 @@ include('bdd.php');
 			while($donnee=$req->fetch()){
 ?>
 	<form method="post" action="requeteMetAjourProduits.php?id_pro=<?php echo $donnee['id_pro']; ?>" enctype="multipart/form-data" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-		<div style="height:200px; border:1px solid black; max-width:300px">  <img src="../public/image/<?=$donnee['image_pro']?>" class="img-responsive"></div>
+		<div style="height:200px; border:1px solid black; max-width:300px">  <img src="../public/image/<?=$donnee['image_pro']?>" class="img-responsive"></div><span><?=$donnee['date_modif']?></span>
 		<table>
 			<tr>
 				<td><label for="image1">Chair congelé </label></td>
@@ -44,6 +44,10 @@ include('bdd.php');
 				<td><label for="nomProduit">Nom du produit</label></td>
 				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
 			</tr>
+			<tr style="margin-bottom:5px">
+				<td><label for="nomProduit">chemin du desti</label></td>
+				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
+			</tr>
 			<tr>
 				<td><label for="interPoids1">Intervalle de poids</label></td>
 				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
@@ -53,7 +57,7 @@ include('bdd.php');
 				<td><input type="text" id="poidsPrix1" name="poidsPrix" value="<?php echo $donnee['prix']; ?>"></td>
 			</tr>
 			<tr style="margin-bottom:5px">
-				<td><label for="stock1">Stock</label></td>
+				<td><label for="stock1">Statu</label></td>
 				<td><input type="text" id="stock1" name="stock" value="<?php echo $donnee['stock']; ?>"/></td>
 			</tr>
 			<tr>

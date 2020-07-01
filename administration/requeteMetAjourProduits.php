@@ -8,6 +8,7 @@
 	$tmp = file_get_contents($_FILES['image']['tmp_name']);
 
 	$nomProduit=$_POST['nomProduit'];
+	$cheminDesti=$_POST['cheminDesti'];
 	$PIntervalle=$_POST['PIntervalle'];
 	$poidsPrix = $_POST['poidsPrix'];
 	$stock=$_POST['stock'];
@@ -17,6 +18,7 @@
 	$reqAjour='UPDATE produits SET
 					image_pro = :image,
 					nom_pro = :image_nom,
+					chemin_desti= :chemin_desti,
 					inter_poids = :poidsInter,
 					prix = :prix,
 					stock = :stock,
@@ -29,6 +31,7 @@
 			'idPro' =>$idPro,
 			'image'=>$nomImage,
 			'image_nom'=>$nomProduit,
+			'chemin_desti'=>$cheminDesti,
 			'poidsInter'=>$PIntervalle,
 			'prix'=>$poidsPrix,
 			'stock'=>$stock,

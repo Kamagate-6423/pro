@@ -9,7 +9,7 @@
 		function requete($debut,$fin)
 		{
 			$bdd= new BDD();
-			$reqSql='SELECT id_pro, image_pro, inter_poids, prix, stock, info_pro FROM produits WHERE id_pro>=? AND id_pro<=? ORDER BY id_pro';
+			$reqSql='SELECT id_pro, image_pro, chemin_desti, inter_poids, prix, stock, info_pro FROM produits WHERE id_pro>=? AND id_pro<=? ORDER BY id_pro';
 			$reqVariable=array($debut,$fin);
 			$req = $bdd->requetes($reqSql,$reqVariable);
 			
