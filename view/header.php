@@ -33,8 +33,6 @@
 	<div class="corp">
 		<div class="container-fluid sociaux" style="padding-left:0px; padding-right:0px">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="padding-left:0px">
-				
-				
 				<?php if(isset($_SESSION['connexion'])){ ?>
 				<div class="col-sm-12 col-md-12 col-lg-12">
 					<a class="btn btn-warning" style="height:30px" href="../controller/detruireSession.php" class="deconnecter">Deconnecter</a>
@@ -46,26 +44,27 @@
 					<a class="btn btn-warning" style="height:30px; font-weight:bold;" href="../view/client.php?connecter=connecter" >Connexion</a>
 				</div>
 				<?php } ?>
-				
 			</div>
+			
 <?php if(!empty($_SESSION['client']['nomCli'])){ ?>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " style="text-align:center"><?=$_SESSION['client']['nomCli'];?> 
 			<?=$_SESSION['client']['prenomCli'];?></div>
 <?php }else{ ?>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align:center"> Nom et Prénom du client</div>
 <?php } ?>
+
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 " style="padding-right:0px;"> 
 				<div class="col-sm-7 col-md-6 col-lg-6"><a href="../view/panier.php" class="btn btn-warning" 			style="height:30px; font-weight:bold" ><span class="glyphicon  glyphicon-shopping-cart"></span> Panier</a>:<span id="compt"><?=$panier->compt()?><span style="color:orange" >Kg</span></span>
 				</div>
-				<div class="col-sm-5 col-md-6 col-lg-6">Total:<span id="total"><?=$panier->total()?>					 	<span style="color:orange">fcfa</span></span></br>
-				<?php  
+				<div class="col-sm-5 col-md-6 col-lg-6"><span id="total">Total: <?=$panier->total()?>					 	<span style="color:orange">fcfa</span></span></br>
+<?php  				
+		//pour afficher Voir votre commande ou Commandez
 			$idCli="";
 		if(isset($_SESSION['client']['idClien'])){
-		$idCli=$_SESSION['client']['idClien'];
+			$idCli=$_SESSION['client']['idClien'];
 	}
-
 	$reqInfo='SELECT id_cli
-				FROM commandes WHERE id_cli = ?';
+			FROM commandes WHERE id_cli = ?';
 	
 	$variableInfo=array($idCli);
 	
@@ -76,18 +75,23 @@
 			?>
 						<a href="../view/panier.php" class="btn btn-primary ">Voir votre commande</a>
 	<?php  }else{ 
+				if($panier->compt()==0){
 	?>
-				<a href="../view/panier.php" class="btn btn-primary ">Commander</a>
+					<a href="../view/panier.php" class="btn btn-primary hidden">Commander</a>
 	<?php
-	} ?>
-						
+					}else{
+	?>
+					<a href="../view/panier.php" class="btn btn-primary ">Commander</a>
+	<?php
+						}
+				} ?>				
 				</div>
 			</div>
 		</div>
 
 		   <header class="container-fluid">
-				<div class="hidden-xs col-sm-2 col-md-3 col-lg-2"><img src="../public/image/logo.jpg" class="img-responsive"> </div>
-				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-6"><h1>De La Chair Fraîche</h1></div>
+				<div class="hidden-xs col-sm-2 col-md-3 col-lg-2" ><img src="../public/image/logo.jpg" class="img-responsive"> </div>
+				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-6"style="max-height:100px"><h1>De La Chair Fraîche</h1></div>
 				<div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
 					<div class="panel panel-default" style="height:100px">
 						<div class="panel-heading">Contacts</div>
@@ -133,7 +137,6 @@
 					<li>
 					  <a href="../index/index.php?menu4=poussinsChairs" class="dropdown-toggle"role="button">Poussins
 					  </a>
-					  
 					</li>
 				  </ul>
 				  <form class="navbar-form navbar-right">
@@ -142,7 +145,6 @@
 					</div>
 					<button type="submit" class="btn btn-default">OK</button>
 				  </form>
-				  
 				</div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
