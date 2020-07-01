@@ -116,7 +116,7 @@
 						</table>
 						
 				<form method="post" action="" class="annuleForm">
-				<input type="nember" name="idCli" value="<?=$_SESSION['client']['idClien']?>" class="anInput">
+				<input type="nember" name="idCli" value="<?=$_SESSION['client']['idClien']?>" class="anInput hidden">
 				<button type="submit" style="text-align:center" class="btn btn-danger annuleCom">Annuler votre commande</button>
 				</form>
 				<?php
