@@ -280,6 +280,14 @@ input {
 	.sociaux{
 		height:60px;
 	}
+	#nav{
+	position:sticky;
+	top:0px;
+	z-index:10;
+	}
+	#total{
+		color:red;
+	}
 }
 @media screen and (max-width:700px){
 	.sociaux{
