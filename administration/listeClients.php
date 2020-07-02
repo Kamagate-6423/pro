@@ -3,7 +3,7 @@
 	
 	$bdd=new BDD();
 	
-	$reqListe='SELECT id_cli, nom_cli, prenom_cli, tel_cli, email_cli, adresse_cli, date_inscription FROM clients ORDER BY date_inscription DESC';
+	$reqListe='SELECT id_cli, nom_cli, prenom_cli, tel_cli, email_cli, adresse_cli, date_connexion, date_inscription FROM clients ORDER BY date_inscription DESC';
 	
 	$req=$bdd->requetes($reqListe);
  
@@ -18,7 +18,8 @@
 			<th>EMAIL</th>
 			<th>TEL</th>
 			<th>ADRESSE</th>
-			<th>DATE D'INSCRIPTION</th>
+			<th>Inscrire</th>
+			<th>Connecter</th>
 			<th>Supprimer</th>
 		<tr/>
 	</thead>
@@ -31,6 +32,7 @@
 			<td><?=$donnee['tel_cli'] ?> </td>
 			<td><?=$donnee['adresse_cli'] ?> </td>
 			<td><?=$donnee['date_inscription'] ?> </td>
+			<td><?=$donnee['date_connexion']?></td>
 		<form method="post" action="requetesSupprimer">
 			<td><input type="number" name="suppCli" value="<?=$donnee['id_cli']?>" class="hidden"><button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
 		</form>

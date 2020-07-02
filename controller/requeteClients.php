@@ -49,13 +49,15 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 		$telCli=strip_tags($_POST['telCli']);
 		$passCli=strip_tags($_POST['passCli']);
 		
+		
 		$reqCli='SELECT * FROM clients WHERE tel_cli=:tel';
 		$varCli=array(
 				'tel'=>$telCli
 		);
-		
-		
 		$reqVoirProduit = $bdd->requetes($reqCli,$varCli);
+		
+		$date_con='UPDATE clients SET date_connexion = NOW() WHERE tel_cli=:tel';
+		$bdd->requetes($date_con, $varCli);
 		
 		$donnee=$reqVoirProduit->fetch();
 		
