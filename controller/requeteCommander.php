@@ -29,6 +29,9 @@
 		'total'=>$totalV);
 		
 	 
+	$date_con='UPDATE commandes SET date_valid = NOW() WHERE id_cli=:id';
+		$bdd->requetes($date_con,array('id'=>$idCli));
+		
 	$bdd->requetes($reqValider,$reqVariable);
 	
 		$_SESSION['commander']="Commande a bien été enrégistrée vous allez recevoir un appel 30 min avant la livraison. ";
