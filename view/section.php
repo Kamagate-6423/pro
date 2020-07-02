@@ -15,7 +15,6 @@
 			<div class="carousel-inner" role="listbox">
 <?php
 				$reqAc1=requete(1,3);
-
 				while($donneeAc1=$reqAc1->fetch()){
 ?>
 			  
@@ -65,9 +64,7 @@
 		<section class="section">
 <?php	
 		
-		
 		$reqAc2=requete(4,12);
-		
 		while($donneeAc2=$reqAc2->fetch()){
 ?>
 		
@@ -82,6 +79,4 @@
 		}
 ?>
 		</section>
-	
 	</div>
-
