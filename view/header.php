@@ -35,7 +35,11 @@
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="padding-left:0px">
 				<?php if(isset($_SESSION['connexion'])){ ?>
 				<div class="col-sm-12 col-md-12 col-lg-12">
-					<a class="btn btn-warning" style="height:30px" href="../controller/detruireSession.php" class="deconnecter">Deconnecter</a>
+					<form method="post" action="../controller/detruireSession.php">
+					<input type="number" name="idCli" value="<?=$_SESSION['client']['idClien']?>" class="hidden">
+					<button type="submit" class="btn-warning">Deconnecter</button>
+					</form>
+					<!--a class="btn btn-warning" style="height:30px" href="../controller/detruireSession.php" class="deconnecter">Deconnecter</a-->
 				</div>
 				<?php }else{  ?>
 				<div class=" col-sm-4 col-md-6 col-lg-6"><a class="btn btn-warning" style="height:30px; font-weight:bold" 	href="../view/client.php?inscrire=inscrire" >Inscrivez-vous</a>
