@@ -288,6 +288,11 @@ input {
 	#total{
 		color:red;
 	}
+	.PCongele .ajoutAuPanier{
+		font-size:11px;
+		color:white;
+		font-weight:bold;
+	}
 }
 @media screen and (max-width:700px){
 	.sociaux{
