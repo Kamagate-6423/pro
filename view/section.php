@@ -16,8 +16,7 @@
 <?php
 				$reqAc1=requete(1,3);
 				while($donneeAc1=$reqAc1->fetch()){
-?>
-			  
+?>  
 				<div class="item <?=$donneeAc1['stock']?>">
 					<a href="<?=$donneeAc1['chemin_desti']?>">
 						<img src="../public/image/<?=$donneeAc1['image_pro']?>" class="img-responsive" alt="...">
