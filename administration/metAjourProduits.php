@@ -357,74 +357,14 @@ include('bdd.php');
 		</table>
 	</form>
 <?php
-	}
+			}
 			$req->closeCursor();
 ?>
 				</fieldset>
 			</div>
-			
 <?php
 		}
-	/* A ANNULER	
-		public function pouletsVivantsAfricains(){
-		
-		$req=requete(24,27);
-
-?>
-			<div>
-				<fieldset>	<legend>POULETS AFRICAINS</legend>
-		
-				<?php	 
-			while($donnee=$req->fetch()){
-?>
-					<form method="post" action="requeteMetAjourProduits.php?id_pro=<?php echo $donnee['id_pro']; ?>" enctype="multipart/form-data" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-		<div style="height:200px; border:1px solid black; max-width:300px"> <img src="../public/image/<?=$donnee['image_pro']?>" class="img-responsive"> </div>
-		<table>
-			<tr>
-				<td><label for="image1">Chair congelé </label></td>
-				<td><input type="file" id="image1" name="image"/></td>
-			</tr>
-			<tr style="margin-bottom:5px">
-				<td><label for="id_pro">Identifiant du produit</label></td>
-				<td><?php echo $donnee['id_pro']; ?><input type="text" id="id_pro" name="id_pro" value="<?php echo $donnee['id_pro']; ?>" class="hidden"/></td>
-			</tr>
-			<tr style="margin-bottom:5px">
-				<td><label for="nomProduit">Nom du produit</label></td>
-				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
-			</tr>
-			<tr>
-				<td><label for="interPoids1">Intervalle de poids</label></td>
-				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
-			</tr>
-			<tr>
-				<td><label for="poidsPrix1">Prix</label></td>
-				<td><input type="text" id="poidsPrix1" name="poidsPrix" value="<?php echo $donnee['prix']; ?>"></td>
-			</tr>
-			<tr style="margin-bottom:5px">
-				<td><label for="stock1">Stock</label></td>
-				<td><input type="text" id="stock1" name="stock" value="<?php echo $donnee['stock']; ?>"/></td>
-			</tr>
-			<tr>
-				<td><label for="description1">Information sur produit</label></td>
-				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><a href="?id_pro=<?php echo $donnee['id_pro']; ?>"><input type="submit" value="Actualiser"></a></td>
-			</tr>
-		</table>
-	</form>
-<?php
 	}
-			$req->closeCursor();
-?>
-				</fieldset>
-			</div>
-			
-<?php
-		} */
-	}
-
 ?>
 
 <?php /***********************Les oeufs*********************************/ ?>
@@ -478,71 +418,13 @@ include('bdd.php');
 		</table>
 	</form>
 <?php
-	}
+			}
 			$req->closeCursor();
 ?>
 			</fieldset>
 		</div>
 <?php
 		}
-		
-		/* A ANNULER
-		public function oeufsAfricains(){
-	
-			$req=requete(30,32);
-
-		
-?>		<div class="oeufs">
-			<fieldset >	<legend>Oeufs pour poulets africains</legend>
-		
-<?php	 
-			while($donnee=$req->fetch()){
-?>
-					<form method="post" action="requeteMetAjourProduits.php?id_pro=<?php echo $donnee['id_pro']; ?>" enctype="multipart/form-data" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-		<div style="height:200px; border:1px solid black; max-width:300px">  <img src="../public/image/<?=$donnee['image_pro']?>" class="img-responsive"> </div>
-		<table>
-			<tr>
-				<td><label for="image1">Chair congelé </label></td>
-				<td><input type="file" id="image1" name="image"/></td>
-			</tr>
-			<tr style="margin-bottom:5px">
-				<td><label for="id_pro">Identifiant du produit</label></td>
-				<td><?php echo $donnee['id_pro']; ?><input type="text" id="id_pro" name="id_pro" value="<?php echo $donnee['id_pro']; ?> " class="hidden"/></td>
-			</tr>
-			<tr style="margin-bottom:5px">
-				<td><label for="nomProduit">Nom du produit</label></td>
-				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
-			</tr>
-			<tr>
-				<td><label for="interPoids1">Intervalle de poids</label></td>
-				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
-			</tr>
-			<tr>
-				<td><label for="poidsPrix1">Prix</label></td>
-				<td><input type="text" id="poidsPrix1" name="poidsPrix" value="<?php echo $donnee['prix']; ?>"></td>
-			</tr>
-			<tr style="margin-bottom:5px">
-				<td><label for="stock1">Stock</label></td>
-				<td><input type="text" id="stock1" name="stock" value="<?php echo $donnee['stock']; ?>"/></td>
-			</tr>
-			<tr>
-				<td><label for="description1">Information sur produit</label></td>
-				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><a href="?id_pro=<?php echo $donnee['id_pro']; ?>"><input type="submit" value="Actualiser"></a></td>
-			</tr>
-		</table>
-	</form>
-<?php
-	}
-			$req->closeCursor();
-?>
-			</fieldset>
-		</div>
-<?php
-		}  */
 	}
 ?>
 
@@ -604,11 +486,6 @@ include('bdd.php');
 		}
 		
 	}
-?>
-
-
-
-<?php
 
 $pouletsMorts= new PouletsMorts();
 
@@ -620,16 +497,10 @@ $pouletsVivants= new PouletsVivants();
 	$pouletsVivants->pouletsVivantsChairs();
 	$pouletsVivants->pouletsVivantsPondeuses();
 	$pouletsVivants->pouletsVivantsCokeles();
-	//$pouletsVivants->pouletsVivantsAfricains();
 	
 $oeufs= new Oeufs();
 	$oeufs->oeufsPondeuses();
-	//$oeufs->oeufsAfricains();
 
 $poussins=new Poussins();
 	$poussins->poussinsChairs();
-
-
-	////partie clients////
-
 ?>
