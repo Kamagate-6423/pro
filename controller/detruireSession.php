@@ -4,7 +4,7 @@ session_start();
 include('../administration/bdd.php');
 $bdd=new BDD();
 
-if(isset(verifierDonne($_GET['ok']))){ // Lorsqu'une personne valide sa commande 
+if(isset($_GET['ok'])){ // Lorsqu'une personne valide sa commande 
 	unset($_SESSION['panier']);
 	unset($_SESSION['commander']);
 	unset($_SESSION['compt']);
