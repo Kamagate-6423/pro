@@ -3,7 +3,7 @@
 
 	<?php
 		
-		$image_id=$_GET['id_pro'];
+		$image_id=verifierDonne($_GET['id_pro']);
 		
 		$reqSelect='SELECT id_pro, image_pro, nom_pro, inter_poids, prix, info_pro FROM produits WHERE id_pro=?';
 		$reqVariable=array($image_id);
