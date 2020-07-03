@@ -29,12 +29,12 @@
 		}
 	}
 	
-	function checkData($data){
-		$data=trim($data);
-		$data=stripslashes($data);
-		$data=htmlspecialchars($data);
+	function verifierDonne($donne){
+		$donne=trim($donne);
+		$donne=stripslashes($donne);
+		$donne=strip_tags($donne);
+		$donne=htmlspecialchars($donne);
 		
-		return $data;
+		return $donne;
 	}
-	
-	
+?>
