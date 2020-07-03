@@ -1,21 +1,20 @@
 
-
 <?php
 
-	include('bdd.php');
-	$nomImage = $_FILES['image']['name'];
+include('bdd.php');	
+	$nomImage = verifierDonne($_FILES['image']['name']);
 	$tmp = file_get_contents($_FILES['image']['tmp_name']);
-	$identifiant=$_POST['identifiant'];
-	$nomProduit=$_POST['nomProduit'];
-	$PIntervalle=$_POST['PIntervalle'];
-	$poidsPrix = $_POST['poidsPrix'];
-	$stock1=$_POST['stock'];
-	$description = $_POST['description'];
-	
+	$identifiant= verifierDonne($_POST['identifiant']);
+	$nomProduit= verifierDonne($_POST['nomProduit']);
+	$PIntervalle= verifierDonne($_POST['PIntervalle']);
+	$poidsPrix = verifierDonne($_POST['poidsPrix']);
+	$stock1= verifierDonne($_POST['stock']);
+	$description = verifierDonne($_POST['description']);
+	$chemin= verifierDonne($_POST['chemin']);
 
 $bdd=new BDD();
-$bdd->requetes('INSERT INTO produits(id_pro,image_pro,nom_pro,inter_poids,prix,stock,info_pro,binaire, date_modif)
-				VALUES(:id_pro,:image, :image_nom, :intervalle, :poidsPrix, :stock, :descrip, :binaire, NOW())',
+$bdd->requetes('INSERT INTO produits(id_pro,image_pro,nom_pro,inter_poids,prix,stock,info_pro,binaire, chemin_desti, date_modif)
+				VALUES(:id_pro,:image, :image_nom, :intervalle, :poidsPrix, :stock, :descrip, :binaire, :chemin, NOW())',
 				array(
 			'id_pro'=>$identifiant,
 			'image'=>$nomImage,
@@ -24,8 +23,7 @@ $bdd->requetes('INSERT INTO produits(id_pro,image_pro,nom_pro,inter_poids,prix,s
 			'poidsPrix'=>$poidsPrix,
 			'stock'=>$stock1,
 			'descrip'=>$description,
-			'binaire'=>$tmp));
+			'binaire'=>$tmp,
+			'chemin'=>$chemin));
 			
-		
-		
 header("Location:adminHeader.php");
