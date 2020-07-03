@@ -4,7 +4,7 @@ include('../administration/bdd.php');
 	$bdd= new BDD();
 	 
 		if(isset($_GET['id'])){
-			$id=$_GET['id'];
+			$id=verifierDonne($_GET['id']);
 		$reqSql='SELECT id_pro FROM produits WHERE id_pro=:id';
 		$reqVariable=array('id'=>$id);
 		$req = $bdd->requetes($reqSql,$reqVariable);
@@ -30,7 +30,8 @@ include('../administration/bdd.php');
 			}
 			if(isset($_GET['idSupp'])){
 				
-				$this->supp($_GET['idSupp']);
+				$idSupp=verifierDonne($_GET['idSupp']);
+				$this->supp($idSupp);
 			}
 			if(isset($_POST['panier']['quantite'])){
 				$this->actualiseQte();
@@ -39,7 +40,7 @@ include('../administration/bdd.php');
 			$this->bdd=$bdd;
 		}
 		public function actualiseQte(){
-			$_SESSION['panier']=$_POST['panier']['quantite'];
+			$_SESSION['panier']= $_POST['panier']['quantite'];
 		}
 		
 		public function total(){

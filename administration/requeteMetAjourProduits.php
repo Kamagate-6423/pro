@@ -2,17 +2,17 @@
 
 	include('bdd.php');
 	
-	$idPro = $_GET['id_pro'];
+	$idPro = verifierDonne($_GET['id_pro']);
 	
-	$nomImage = $_FILES['image']['name'];
+	$nomImage = verifierDonne($_FILES['image']['name']);
 	$tmp = file_get_contents($_FILES['image']['tmp_name']);
 
-	$nomProduit=$_POST['nomProduit'];
-	$cheminDesti=$_POST['cheminDesti'];
-	$PIntervalle=$_POST['PIntervalle'];
-	$poidsPrix = $_POST['poidsPrix'];
-	$stock=$_POST['stock'];
-	$description = $_POST['description'];
+	$nomProduit= verifierDonne($_POST['nomProduit']);
+	$cheminDesti= verifierDonne($_POST['cheminDesti']);
+	$PIntervalle= verifierDonne($_POST['PIntervalle']);
+	$poidsPrix = verifierDonne($_POST['poidsPrix']);
+	$stock= verifierDonne($_POST['stock']);
+	$description = verifierDonne($_POST['description']);
 	
 
 	$reqAjour='UPDATE produits SET

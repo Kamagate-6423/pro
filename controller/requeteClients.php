@@ -6,13 +6,13 @@ session_start();
 $bdd= new BDD();
 
 if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
-	$nomCli=strip_tags($_POST['nomCli']);
-	$prenomCli=strip_tags($_POST['prenomCli']);
-	$emailCli=strip_tags($_POST['emailCli']);
+	$nomCli=verifierDonne($_POST['nomCli']);
+	$prenomCli=verifierDonne($_POST['prenomCli']);
+	$emailCli=verifierDonne($_POST['emailCli']);
 	
-	$passCli= strip_tags($_POST['passCli']);
-	$adresseCli=strip_tags($_POST['adresseCli']);
-	$telCli=strip_tags($_POST['telCli']);
+	$passCli= verifierDonne($_POST['passCli']);
+	$adresseCli=verifierDonne($_POST['adresseCli']);
+	$telCli=verifierDonne($_POST['telCli']);
 	
 	
 	$reqListe='SELECT tel_cli FROM clients WHERE tel_cli=?';//initier pour vérifier si le numero a deja ete l'objet d'une inscriprtion
@@ -46,8 +46,8 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 }else if(isset($_GET['connexion']) && !empty($_POST['telCli']) && !empty($_POST['passCli'])){
 	
 	///connecter un client
-		$telCli=strip_tags($_POST['telCli']);
-		$passCli=strip_tags($_POST['passCli']);
+		$telCli=verifierDonne($_POST['telCli']);
+		$passCli=verifierDonne($_POST['passCli']);
 		
 		
 		$reqCli='SELECT * FROM clients WHERE tel_cli=:tel';

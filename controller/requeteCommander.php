@@ -8,9 +8,9 @@
 	$pQte=implode(',',array_values($_SESSION['panier']));
 	$pKeys=implode(',',array_keys($_SESSION['panier']));
 	
-	$lieuxL=strip_tags($_POST['lieuxL']);
-	$dateL=strip_tags($_POST['dateL']);
-	$heureL=strip_tags($_POST['heureL']);
+	$lieuxL= verifierDonne($_POST['lieuxL']);
+	$dateL= verifierDonne($_POST['dateL']);
+	$heureL= verifierDonne($_POST['heureL']);
 	$idCli=$_SESSION['client']['idClien'];
 	
 	$totalV=$panier->total();

@@ -2,7 +2,7 @@
 include('bdd.php');
 	
 	$bdd=new BDD();
-	$id=$_GET['id_com'];
+	$id=verifierDonne($_GET['id_com']);
 	
 	$reqInfo='SELECT cli.id_cli id_cli, cli.nom_cli nom,
 				cli.prenom_cli prenom, cli.tel_cli tel, 
