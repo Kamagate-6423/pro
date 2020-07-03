@@ -110,7 +110,7 @@
 							?>
 							</tbody>
 							<tfoot>
-								<td colspan="2">TOTAL </td>
+								<td colspan="3">TOTAL </td>
 								<td><strong> <?=$total?> fcfa</strong> </td>
 							</tfoot>
 						</table>
