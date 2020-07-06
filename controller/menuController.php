@@ -64,7 +64,7 @@
 			}
 		}
 		
-		if(isset($_GET['menu1'])){ 
+		if(isset($_GET['section'])){ 
 			$section=verifierDonne($_GET['section']);
 			if(isset($section)){
 				if($section=='poussins'){
