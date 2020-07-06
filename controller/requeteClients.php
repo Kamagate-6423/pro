@@ -9,11 +9,9 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 	$nomCli=verifierDonne($_POST['nomCli']);
 	$prenomCli=verifierDonne($_POST['prenomCli']);
 	$emailCli=verifierDonne($_POST['emailCli']);
-	
 	$passCli= verifierDonne($_POST['passCli']);
 	$adresseCli=verifierDonne($_POST['adresseCli']);
 	$telCli=verifierDonne($_POST['telCli']);
-	
 	
 	$reqListe='SELECT tel_cli FROM clients WHERE tel_cli=?';//initier pour vérifier si le numero a deja ete l'objet d'une inscriprtion
 	$req1=$bdd->requetes($reqListe,array($telCli)); // la class bdd est definie dans dossier administration
@@ -97,7 +95,7 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 		
 	
 	//header('location:../index.php');
-}else{
+	}else{
 	$_SESSION['connexionEchouer']="";
 	header('location:../view/client.php');
 }
