@@ -5,7 +5,11 @@
 	$idPro = verifierDonne($_GET['id_pro']);
 	
 	$nomImage = verifierDonne($_FILES['image']['name']);
-	$tmp = file_get_contents($_FILES['image']['tmp_name']);
+	$imageChemin="../public/image/".basename($nomImage);
+	$imageExtension=pathinfo($imageChemin,PATHINFO_EXTENSION);
+	move_uploaded_file($_FILES['image']['tmp_name'], $imageChemin);
+	
+	$tmp =""; //file_get_contents($_FILES['image']['tmp_name']);
 
 	$nomProduit= verifierDonne($_POST['nomProduit']);
 	$cheminDesti= verifierDonne($_POST['cheminDesti']);
