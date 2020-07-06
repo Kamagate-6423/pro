@@ -67,10 +67,10 @@
 		while($donneeAc2=$reqAc2->fetch()){
 ?>
 		
-			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
+			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 thumbnail differentsProduits">
 				<a href="../index/index.php?section=congeletC">
 					<div class="produit"><img src="../public/image/<?=$donneeAc2['image_pro']?>" class="img-responsive" alt="Poulets prêt à cuire"></div>
-					<div class="description"><p><?=$donneeAc2['info_pro']?> </p></div>
+					<div class="description caption"><p><?=$donneeAc2['info_pro']?> </p></div>
 					<div class="plusDeDetails">Voir plus</div>
 				</a>
 			</div>
