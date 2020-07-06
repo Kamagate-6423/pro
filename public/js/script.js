@@ -62,12 +62,7 @@ $(function(){
 			
 			
 			$(".comVal").on('submit',function(event){
-				//event.preventDefault();
-				//url=$(this).attr('action');
-				//$.get(url,{},function(data){
-					
-					alert('');
-				//},"json");
+					alert('Votre commande a bien été enregistré');
 				//return false;
 			});
 			
@@ -105,6 +100,68 @@ $(function(){
 				$('.passDifferent').css('display','block');
 			}else {
 				$('.passDifferent').css('display','none');
+			}
+		})
+		
+		// alert pour les champs non renseignés de la connexion
+		$('.connexion1').on('click', function(){
+			
+			if($('#telCli1').val()==""){
+			$('.telCli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.telCli').text("");
+			}
+			
+			if($('#passCli1').val()==""){
+			$('.passCli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.passCli').text("");
+			}
+		})
+		
+		// alert pour les champs non renseignés de l'inscription
+		$('.inscription1').on('click', function(){
+			
+			if($('#nomCli').val()==""){
+			$('.nomCli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.nomCli').text("");
+			}
+			
+			if($('#prenomCli').val()==""){
+			$('.prenomCli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.prenomCli').text("");
+			}
+			
+			if($('#emailCli').val()==""){
+			$('.emailCli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.emailCli').text("");
+			}
+			
+			if($('#telCli').val()==""){
+			$('.telCli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.telCli').text("");
+			}
+			
+			if($('#passCli').val()==""){
+			$('.passCli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.passCli').text("");
+			}
+			
+			if($('#passCliConf').val()==""){
+			$('.pass2Cli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.pass2Cli').text("");
+			}
+			
+			if($('#adresseCli').val()==""){
+			$('.adresseCli').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.adresseCli').text("");
 			}
 		})
 		
