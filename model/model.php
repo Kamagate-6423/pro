@@ -24,21 +24,23 @@
 			<div>
 				<fieldset><legend>POULETS DE CHAIR ENTIERS</legend>
 				<?php	 
-			while($donnee=$req->fetch()){
+				while($donnee=$req->fetch()){
 ?>
-					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 PCongele"><div class="image"><a href="../view/voirProduit.php?id_pro=<?=$donnee['id_pro'];?>"><img src="../public/image/<?php echo $donnee['image_pro']; ?>" alt="" class="img-responsive"></a></div>
-					<div class="prix"><?php echo $donnee['inter_poids']; ?> <br/>l'entier à <?=$donnee['prix']?> fcfa<br/>
-					<?php if($donnee['stock']=='En Stock'){ ?>
-						<a href="../controller/requetePanier.php?id=<?=$donnee['id_pro']?>" class="btn btn-primary ajoutPanier"><span class="glyphicon glyphicon-plus" style="color:yellow"></span><span  class="ajoutAuPanier">Ajouter au panier</span></a>
-					<?php  	}else if($donnee['stock']=='Stock epuisé'){ ?>
-						<a href="#" class="btn btn-primary ajoutPanierNon" style="background-color:rgb(200,0,0,0.7);">Stock épuisé</a>
-					<?php   } ?>
-					<br/><?php echo $donnee['stock']; ?> 
-					</div>
+					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 PCongele">
+						<div class="image"><a href="../view/voirProduit.php?id_pro=<?=$donnee['id_pro'];?>"><img src="../public/image/<?php echo $donnee['image_pro']; ?>" alt="" class="img-responsive"></a>
+						</div>
+						<div class="prix"><?php echo $donnee['inter_poids']; ?> <br/>l'entier à <?=$donnee['prix']?> fcfa	<br/>
+						<?php if($donnee['stock']=='En Stock'){ ?>
+								<a href="../controller/requetePanier.php?id=<?=$donnee['id_pro']?>" class="btn btn-primary ajoutPanier"><span class="glyphicon glyphicon-plus" style="color:yellow"></span><span  class="ajoutAuPanier">Ajouter au panier</span></a>
+						<?php  	}else if($donnee['stock']=='Stock epuisé'){ ?>
+								<a href="#" class="btn btn-primary ajoutPanierNon" style="background-color:rgb(200,0,0,0.7);">Stock épuisé</a>
+						<?php   } ?>
+							<br/><?php echo $donnee['stock']; ?> 
+						</div>
 					</div>
 <?php
 	}
-			$req->closeCursor();
+				$req->closeCursor();
 ?>				</fieldset>
 			</div>
 			
