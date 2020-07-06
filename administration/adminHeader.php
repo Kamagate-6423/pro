@@ -27,7 +27,7 @@ if(!empty($_SESSION['client']['nomAdministrateur'])){
 	<div class="corp">
 		<div class="container-fluid sociaux">
 			<div class="col-xs-4 col-sm-3 col-md-2 col-lg-3 ">
-				<div class="col-sm-6 col-md-6 col-lg-6"><a href="../controller/detruireSession.php" >Déconnecter</a></div>
+				<div class="col-sm-6 col-md-6 col-lg-6"><a href="../controller/detruireSession.php" class="btn btn-warning">Déconnecter</a></div>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <?=$_SESSION['client']['nomAdministrateur']?> <?=$_SESSION['client']['prenomAdministrateur']?> </div>
 			<div class="col-xs-4 col-sm-5 col-md-6 col-lg-5 "> 
