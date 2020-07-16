@@ -70,7 +70,7 @@ if(isset($_POST['changePasse'])){
 	
 
 ?>	
-	<fieldset><legend>Demende de modification de mot de passe</legend>
+	<fieldset><legend>Demande de modification de mot de passe</legend>
 <table class="tableCli">
 	<thead>
 		<tr>
