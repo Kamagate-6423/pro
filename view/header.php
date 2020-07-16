@@ -58,7 +58,7 @@
 <?php } ?>
 
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 " style="padding-right:0px;"> 
-				<div class="col-sm-7 col-md-6 col-lg-6"><a href="../view/panier.php" class="btn btn-warning" 			style="height:30px; font-weight:bold" ><span class="glyphicon  glyphicon-shopping-cart"></span> Panier</a>:<span id="compt"><?=$panier->compt()?><span style="color:orange" >Kg</span></span>
+				<div class="col-sm-7 col-md-6 col-lg-6"><a href="../view/panier.php" class="btn btn-warning" 			style="height:30px; font-weight:bold" ><span class="glyphicon  glyphicon-shopping-cart"></span> Panier</a>:<span id="compt"><span class="compt"><?=$panier->compt()?></span><span style="color:orange" >Kg</span></span>
 				</div>
 				<div class="col-sm-5 col-md-6 col-lg-6"><span id="total">Total: <?=$panier->total()?>					 	<span style="color:orange">fcfa</span></span></br>
 <?php  				
@@ -77,7 +77,7 @@
 	
 	if(!empty($_SESSION['client']['idClien'])&&isset($siComExiste['id_cli'])){
 			?>
-						<a href="../view/panier.php" class="btn btn-primary ">Voir votre commande</a>
+						<a href="../view/panier.php" class="btn btn-primary "><span class="glyphicon glyphicon-eye-open" ></span> ma commande</a>
 	<?php  }else{ 
 				if($panier->compt()==0){
 	?>
@@ -139,7 +139,11 @@
 					  <a href="../index/index.php?menu3=oeufsPondeuses" class="dropdown-toggle" role="button">Poissons</a>
 					</li>
 					<li>
-					  <a href="../index/index.php?menu4=poussinsChairs" class="dropdown-toggle"role="button">Poussins
+					  <a href="../index/index.php?menu4=poussinsChairs" class="dropdown-toggle"role="button">Oeufs
+					  </a>
+					</li>
+					<li>
+					  <a href="../index/index.php?menu4=poussinsChairs" class="dropdown-toggle"role="button"> Présentation
 					  </a>
 					</li>
 				  </ul>

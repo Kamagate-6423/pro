@@ -34,7 +34,7 @@
 		
 	$bdd->requetes($reqValider,$reqVariable);
 	
-		$_SESSION['commander']="Commande a bien été enrégistrée vous allez recevoir un appel 30 min avant la livraison. ";
+		$_SESSION['commander']="Votre commande a bien été enrégistrée vous allez recevoir un appel 30 min avant la livraison. ";
 		$json['comVal']="Commande a bien été enrégistrée vous allez recevoir un appel 30 min avant la livraison";
 		echo json_encode($json);
 		

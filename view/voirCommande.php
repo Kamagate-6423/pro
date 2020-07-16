@@ -16,9 +16,9 @@
 					com.date_liv date_liv, com.heure_liv heure_liv,
 					com.keys_pro keyss, com.qtes_pro qtes,
 					com.prix_total prixTotal
-					FROM commandes AS com, clients AS cli WHERE com.id_cli = ?';
+					FROM commandes AS com, clients AS cli WHERE com.id_cli = ? AND cli.id_cli=?';
 		
-		$variableInfo=array($idCli);
+		$variableInfo=array($idCli,$idCli);
 		
 		$req=$bdd->requetes($reqInfo,$variableInfo);
 		$donnee=$req->fetch();
@@ -89,7 +89,7 @@
 							
 							for($i=0;$i<sizeof($pKeys);$i++){ //permet de parcourir les clies des produits
 								$image_id=$pKeys[$i]; 
-								$reqInfo1='SELECT image_pro, nom_pro, inter_poids, prix FROM produits WHERE id_pro=:image_id';
+								$reqInfo1='SELECT id_pro, image_pro, nom_pro, inter_poids, prix FROM produits WHERE id_pro=:image_id';
 								$variableInfo1=array('image_id'=>$image_id);
 								
 								$req1=$bdd->requetes($reqInfo1,$variableInfo1);
@@ -99,7 +99,13 @@
 								<tr>
 									<td><img src="../public/image/<?=$donnee1['image_pro']?>" alt="" style="width:100px"></td>
 									<td><?=$donnee1['nom_pro']?><br><?=$idCli?></td>
-									<td><?=$qte=$pQte[$i]; ?> </td>
+									<td><?=$qte=$pQte[$i]; ?> <?php 
+						if($donnee1['id_pro']<=4){
+							
+							//nean
+						}else{
+					?>Kg
+						<?php }?> </td>
 									<td><?=$total1=$donnee1['prix']*$qte;?> fcfa</td>
 								<tr/>
 								
@@ -115,9 +121,10 @@
 							</tfoot>
 						</table>
 						
-				<form method="post" action="" class="annuleForm">
-				<input type="nember" name="idCli" value="<?=$_SESSION['client']['idClien']?>" class="anInput hidden">
-				<button type="submit" style="text-align:center" class="btn btn-danger annuleCom">Annuler votre commande</button>
+				<form method="post" action="panier.php" class="annuleForm">
+					<input type="hidden" name="idCli" value="<?=$_SESSION['client']['idClien']?>" class="anInput hidden">
+					<input type="hidden" name="annuleCom">
+					<button type="submit" style="text-align:center" class="btn btn-danger annuleCom"><span class="glyphicon glyphicon-remove"></span> Annuler ma commande </button>
 				</form>
 				<?php
 				 $_SESSION['commande']="commande";

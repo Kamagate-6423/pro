@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
 include('bdd.php');	
 
 	$nomImage = verifierDonne($_FILES['image']['name']);
@@ -32,5 +32,7 @@ include('bdd.php');
 			'descrip'=>$description,
 			'binaire'=>$tmp,
 			'chemin'=>$chemin));
+			
+	$_SESSION['adminAlert']="Le produit ".$nomProduit." a été ajouté";
 
 header("Location:adminHeader.php?admin=ajouteProduits");

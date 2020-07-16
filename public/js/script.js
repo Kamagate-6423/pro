@@ -8,12 +8,8 @@ $(function(){
 					if(data.message){
 							//alertify.success(data.message);
 					alertify.notify(data.message, 'success', 4, function(){  console.log('dismissed'); });
-						//if(confirm(data.message+ ". Voulez vous consulter votre panier?")){
-						//	location.href='../view/panier.php';
-						//}else{
 							$("#total").empty().append(data.total);
 							$("#compt").empty().append(data.compt);
-						//}
 					}
 				},"json");
 				return false;
@@ -26,19 +22,9 @@ $(function(){
 			$(".dePanier").removeAttr("href");
 			$(".confirmPanier").text("actualiser d'abord");
 		});
-		
-	// Supprimer la commander
-	$(".annuleCom").on('click',function(event){
-		if(confirm("Souhaitez vous annuler votre commande?")){
-			location.href='../index.php';
-		}else{
-			event.preventDefault();
-		}
-	})
-		
 
 			
-	//Pour alerter une stock epuisé
+	//Pour alerter un stock epuisé
 			$(".ajoutPanierNon").click(function(event){
 				event.preventDefault();
 					alertify.alert('Le stock est epuisé.')
@@ -54,18 +40,19 @@ $(function(){
 					if(data.compt>0){
 						location.href='../view/commander.php';
 					}else{
-						alertify.alert("Votre panier est vide");
+						$(".panierVide").css("display","block");
 					}
 				},"json");
 				return false;
 			});
 			
 			
-			$(".comVal").on('submit',function(event){
-					alert('Votre commande a bien été enregistré');
-				//return false;
-			});
-			
+	// la validation de commande
+		if($('.compt').text()==0){
+			$(".comVal").attr("disabled","disabled");
+			$(".comVal").attr("class","btn btn-default");	
+		}
+		
 		// Pour vider votre panier une fois deconnecter
 		
 		$('.deconnecter').on('click',function(){
@@ -97,9 +84,20 @@ $(function(){
 			var pass1= $('.pass1').val();
 			var pass2= $('.pass2').val();
 			if( pass1 !== pass2 ){
-				$('.passDifferent').css('display','block');
+				$('#passCliDifferent').css('display','block');
 			}else {
-				$('.passDifferent').css('display','none');
+				$('#passCliDifferent').css('display','none');
+			}
+		})
+		
+		$('#passe3').blur(function(){
+			
+			var passe2= $('#passe2').val();
+			var passe3= $('#passe3').val();
+			if( passe2 !== passe3 ){
+				$('#passe2DifPasse3').css('display','block');
+			}else {
+				$('#passe2DifPasse3').css('display','none');
 			}
 		})
 		
@@ -107,20 +105,85 @@ $(function(){
 		$('.connexion1').on('click', function(){
 			
 			if($('#telCli1').val()==""){
-			$('.telCli').text("Ce champ ne doit pas être vide").css('color','red');
+			$('.telCli1').text("Ce champ ne doit pas être vide").css('color','red');
 			}else{
-				$('.telCli').text("");
+				$('.telCli1').text("");
 			}
 			
 			if($('#passCli1').val()==""){
-			$('.passCli').text("Ce champ ne doit pas être vide").css('color','red');
+			$('.passCli1').text("Ce champ ne doit pas être vide").css('color','red');
 			}else{
-				$('.passCli').text("");
+				$('.passCli1').text("");
 			}
 		})
 		
+		// alert mot de passe oublier
+		$('.passOublier').on('click', function(){
+			
+			if($('#nom').val()==""){
+			$('.nom').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.nom').text("");
+			}
+			
+			if($('#tel').val()==""){
+			$('.tel').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.tel').text("");
+			}
+		})
+		
+		// alert modifier mot de passe
+		$('.passChange').on('click', function(){
+			
+			if($('#tel1').val()==""){
+			$('.tel1').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.tel1').text("");
+			}
+			
+			if($('#passe1').val()==""){
+			$('.passe1').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.passe1').text("");
+			}
+			
+			if($('#passe2').val()==""){
+			$('.passe2').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.passe2').text("");
+			}
+			
+			if($('#passe3').val()==""){
+			$('.passe3').text("Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.passe3').text("");
+			}
+		})
+		
+		// verifier si le numero d'inscription est au bon format de CI
+		$('.inscrireTel').blur(function(){
+			var verifie = /^\+?[0-9]{8,13}$/;
+			var telCli = $('.inscrireTel').val();
+			
+			if(telCli==""){
+				$('.telCli').text("Ce champ ne doit pas être vide").css('color','red');
+				$('.inscrireSubmit').prop("disabled", false);
+			}else{
+				if(verifie.test(telCli)){
+					$('.telCli').text("");
+					telCli="";
+					$('.inscrireSubmit').prop("disabled", false);
+				}else{
+					$('.telCli').text("Votre numero n'est pas au bon format de la Côte d'Ivoire").css('color','orange');
+					$('.inscrireSubmit').attr('disabled','disabled');
+				}
+			}
+		}
+		)
+		
 		// alert pour les champs non renseignés de l'inscription
-		$('.inscription1').on('click', function(){
+		$('.inscrireSubmit').on('click', function(){
 			
 			if($('#nomCli').val()==""){
 			$('.nomCli').text("Ce champ ne doit pas être vide").css('color','red');
@@ -140,10 +203,18 @@ $(function(){
 				$('.emailCli').text("");
 			}
 			
-			if($('#telCli').val()==""){
+			var verifie = /^\+?[0-9]{8,13}$/;
+			var telCli = $('#telCli').val();
+			
+			if(telCli==""){
 			$('.telCli').text("Ce champ ne doit pas être vide").css('color','red');
 			}else{
-				$('.telCli').text("");
+				if(verifie.test(telCli)){
+					$('.telCli').text("");
+					telCli="";
+				}else{
+					$('.telCli').text("Votre numero n'est pas au bon format de la Côte d'Ivoire").css('color','orange');
+				}
 			}
 			
 			if($('#passCli').val()==""){
@@ -165,10 +236,54 @@ $(function(){
 			}
 		})
 		
+		// alert pour les champs non renseignés lors de la validation de la commande
+		
+		$('#comVal').on('click', function(){
+			
+			if($('#lieux').val()==""){
+			$('.lieuxCom').text(" Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.lieuxCom').text("");
+			}
+			
+			if($('#date').val()==""){
+			$('.dateCom').text(" Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.dateCom').text("");
+			}
+			
+			if($('#heure').val()==""){
+			$('.heureCom').text(" Ce champ ne doit pas être vide").css('color','red');
+			}else{
+				$('.heureCom').text("");
+			}
+		})
+		
+		//Mot de passe oublier
+		$(".ouvrePassOublier").click(function(){
+			$(".motDePassOubli").css("display","block");
+		})
+		$(".fermer").click(function(){
+			$(".motDePassOubli").css("display","none");
+		})
+		
+		$(".ouvrePassChanger").click(function(){
+			$(".motDePassChanger").css("display","block");
+		})
+		$(".fermer1").click(function(){
+			$(".motDePassChanger").css("display","none");
+		})
+		
+		
 		////admin////
 		
 		$('.adminPro a').click(function(event){
 			event.preventDefault();
 		})
+		$("#adminAlert1").click(function(){
+			$(".adminAlert1").css("display","none");
+		})
+		
+		
 		
 		});

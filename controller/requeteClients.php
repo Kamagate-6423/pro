@@ -5,7 +5,8 @@ session_start();
 
 $bdd= new BDD();
 
-if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
+
+if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf'] ){
 	$nomCli=verifierDonne($_POST['nomCli']);
 	$prenomCli=verifierDonne($_POST['prenomCli']);
 	$emailCli=verifierDonne($_POST['emailCli']);
@@ -13,14 +14,21 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 	$adresseCli=verifierDonne($_POST['adresseCli']);
 	$telCli=verifierDonne($_POST['telCli']);
 	
+	$regTel='/^\+?[0-9]{8,13}$/';
+	
+	if(preg_match($regTel, $telCli)){
+	
+	$telCli=substr($telCli,-8);
+	
 	$reqListe='SELECT tel_cli FROM clients WHERE tel_cli=?';//initier pour vérifier si le numero a deja ete l'objet d'une inscriprtion
 	$req1=$bdd->requetes($reqListe,array($telCli)); // la class bdd est definie dans dossier administration
 	$donnee1=$req1->fetch();
 	
 	if(!empty($donnee1['tel_cli'])){
 
-		$_SESSION['inscription']="Le numéro a été déja utilisés pour une inscription sur ce  site.";
-		$_SESSION['connexionEchouer']="";
+		//$_SESSION['inscription']="Le numéro a été déja utilisés pour une inscription sur ce  site.";
+		$_SESSION['connexionEchouer']="Le numéro a été déja utilisés pour une inscription sur ce  site.";
+		
 		header('location:../view/client.php');
 	}else{
 
@@ -40,6 +48,11 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 		$_SESSION['connexionEchouer']="";
 	header('location:../view/client.php');
 	}
+	}else{
+		$_SESSION['connexionEchouer']="Votre inscription n'a pas été prise en compte: Le numero n'est pas au bon format en Côte d'Ivoire";
+		
+		header('location:../view/client.php');
+	}
 	
 }else if(isset($_GET['connexion']) && !empty($_POST['telCli']) && !empty($_POST['passCli'])){
 	
@@ -47,14 +60,16 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 		$telCli=verifierDonne($_POST['telCli']);
 		$passCli=verifierDonne($_POST['passCli']);
 		
+		$telCli=substr($telCli,-8);
 		
-		$reqCli='SELECT * FROM clients WHERE tel_cli=:tel';
+		$reqCli='SELECT * FROM clients WHERE tel_cli=:tel AND pass_cli=:pass';
 		$varCli=array(
-				'tel'=>$telCli
+				'tel'=>$telCli,
+				'pass'=>$passCli
 		);
 		$reqVoirProduit = $bdd->requetes($reqCli,$varCli);
 		
-		$date_con='UPDATE clients SET date_connexion = NOW() WHERE tel_cli=:tel';
+		$date_con='UPDATE clients SET date_connexion = NOW() WHERE tel_cli=:tel AND pass_cli=:pass';
 		$bdd->requetes($date_con, $varCli);
 		
 		$donnee=$reqVoirProduit->fetch();
@@ -89,6 +104,7 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 		
 		$_SESSION['inscription']="";
 		
+		
 		header('location:../view/client.php');
 		
 		}
@@ -99,5 +115,6 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf']){
 	$_SESSION['connexionEchouer']="";
 	header('location:../view/client.php');
 }
+unset($_SESSION['votrePasse']);
 	
 	

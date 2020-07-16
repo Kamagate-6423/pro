@@ -29,6 +29,7 @@
 		}
 	}
 	
+	// pour verifier et securiser les donnees venantes de l'utilisateur
 	function verifierDonne($donne){
 		$donne=trim($donne);
 		$donne=stripslashes($donne);

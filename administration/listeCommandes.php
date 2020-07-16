@@ -40,6 +40,11 @@
 	<?php while($donnee=$req->fetch()){ 
 	
 	$pQte=explode(',',$donnee['qtes']);
+	
+	list($date, $time) = explode(" ", $donnee['dateV']);
+			list($year, $month, $day) = explode("-", $date);
+			list($hour, $min, $sec) = explode(":", $time);
+			
 	?>
 	
 	
@@ -49,10 +54,13 @@
 			<td><?=$donnee['tel'] ?> </td>
 			<td><?=array_sum($pQte) ?> Kg</td>
 			<td><?=$donnee['prixTotal'] ?> fcfa</td>
-			<td><?=$donnee['dateV']?></td>
+			<td><?=$donnee['dateV']="$day/$month/$year $hour:$min"?></td>
 			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
 		<form method="post" action="requetesSupprimer.php">
-			<td><input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden"><button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+			<td><input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">
+			<input type="text" name="nom" value="<?=$donnee['nom']?>" class="hidden" >
+			<input type="text" name="prenom" value="<?=$donnee['prenom']?>" class="hidden">
+			<button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
 		</form>
 		</tr>
 	<?php	} 	

@@ -19,24 +19,23 @@ require('header.php') ;
 		</dl>
 	</div>
 	<span class="mesgeVal"></span>
-	<span id="mesge" style="color:blue; font-size:20px;" > <?php
-	
+	<span id="mesge" style="color:blue; font-size:20px;" > 
+<?php
 	if(!empty($_SESSION['commander'])){
-		echo "<div style=' background-color:rgb(0,200,0,0.4); text-align:center; border-radius:30px' class='alert alert-success' role='alert'>".$_SESSION['commander']."<br/><a href='../controller/detruireSession.php?ok=detruire' style='background-color:green; color:#FFF'>OK</a></div>";
+		echo "<div class='alert alert-success' role='alert' style='text-align:center'>".$_SESSION['commander']."<br/><div style='margin:auto'><a href='../controller/detruireSession.php?ok=detruire' class='btn btn-primary'>OK</a></div></div>";
 	}
-
-	?></span>
+?>	</span>
 	<div class="form" style="height:auto">
 		<form method="post" action="../controller/requeteCommander.php" class="comVal">
-			<fieldset><legend>Remplir ce pour valider votre commande</legend>
+			<fieldset><legend>Remplir ce formulaire pour valider votre commande</legend>
 				<table>
-					<tr><td> <label for="lieux">Lieux de livraison</label> </td><td><textarea type="textarea" id="lieux" name="lieuxL"  required><?php if(isset($_SESSION['client']['adresseCli'])){ echo $_SESSION['client']['adresseCli'];}?></textarea></td></tr>
-					<tr><td> <label for="date">Date de livraison</label> </td><td><input type="date" id="date" name="dateL" placeholder="" required></td></tr>
-					<tr><td> <label for="heure">Heure de livraison</label> </td><td><input type="time" id="heure" name="heureL" placeholder="" required></td></tr>
+					<tr><td> <label for="lieux">Lieux de livraison</label> </td><td><textarea type="textarea" id="lieux" name="lieuxL"  required><?php if(isset($_SESSION['client']['adresseCli'])){ echo $_SESSION['client']['adresseCli'];}?></textarea><span class="lieuxCom" ></span></td></tr>
+					<tr><td> <label for="date">Date de livraison</label> </td><td><input type="date" id="date" name="dateL" placeholder="" required><span class="dateCom" ></span></td></tr>
+					<tr><td> <label for="heure">Heure de livraison</label> </td><td><input type="time" id="heure" name="heureL" placeholder="" required><span class="heureCom" ></span></td></tr>
 					
 				</table>
 				<table style="margin-top:20px; width:100%;">
-				<tr><td><a href='javascript:history.back()' class="btn btn-primary">retour </a></td><td><a href="" ><input type="submit" value="Valider la commander" class="btn-primary"></a></td></tr>
+				<tr><td><a href='javascript:history.back()' class="btn btn-primary">retour </a></td><td><input type="submit" value="Valider la commander" class="btn-primary comVal" id="comVal"></td></tr>
 				</table>
 			</fieldset>	
 		</form>

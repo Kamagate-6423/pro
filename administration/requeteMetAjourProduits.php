@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 	include('bdd.php');
 	
 	$idPro = verifierDonne($_GET['id_pro']);
@@ -45,5 +45,6 @@
 $bdd=new BDD();
 $bdd->requetes( $reqAjour, $varAjour);
 			
+		$_SESSION['adminAlert']="Le produit ".$nomProduit." a été mis ajour";
 		
 	header("Location:adminHeader.php?admin=metAJourProduits1");

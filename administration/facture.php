@@ -22,6 +22,13 @@ include('bdd.php');
 	$pKeys=explode(',',$donnee['keyss']); // recupère les clés des produits dans la commande
 	$pQte=explode(',',$donnee['qtes']); // recupère les quentités de chaque produit
 	$somQte=array_sum($pQte);
+	
+	list($date) = explode(" ", $donnee['date_liv']);
+			list($year, $month, $day) = explode("-", $date);
+			
+	list($time) = explode(" ", $donnee['heure_liv']);
+			list($hour, $min, $sec) = explode(":", $time);
+	
 ?>
 <!doctype html>
 <html lang="fr">
@@ -80,11 +87,11 @@ include('bdd.php');
 						</tr>
 						<tr>
 							<td>Date de livraison</td>
-							<td><?=$donnee['date_liv']?></td>
+							<td><?=$donnee['date_liv']="$day/$month/$year"?></td>
 						</tr>
 						<tr>
 							<td>Heure de livraison</td>
-							<td><?=$donnee['heure_liv']?></td>
+							<td><?=$donnee['heure_liv']="$hour:$min"?></td>
 						</tr>
 						<tr>
 							<td>Somme total</td>
@@ -110,7 +117,7 @@ include('bdd.php');
 			
 			for($i=0;$i<sizeof($pKeys);$i++){ //permet de parcourir les clies des produits
 				$image_id=$pKeys[$i]; 
-				$reqInfo1='SELECT image_pro, nom_pro, inter_poids, prix FROM produits WHERE id_pro=:image_id';
+				$reqInfo1='SELECT id_pro, image_pro, nom_pro, inter_poids, prix FROM produits WHERE id_pro=:image_id';
 				$variableInfo1=array('image_id'=>$image_id);
 				
 				$req1=$bdd->requetes($reqInfo1,$variableInfo1);
@@ -120,7 +127,13 @@ include('bdd.php');
 				<tr>
 					<!--<td><img src="../image/<?=$donnee1['image_pro']?>" alt="" style="width:100px"></td>-->
 					<td><?=$donnee1['nom_pro']?><br><?=$donnee1['inter_poids']?></td>
-					<td><?=$qte=$pQte[$i]; ?> </td>
+					<td><?=$qte=$pQte[$i]; ?> <?php 
+						if($donnee1['id_pro']<=4){
+							
+							//nean
+						}else{
+					?>Kg
+						<?php }?> </td>
 					<td><?=$total1=$donnee1['prix']*$qte;?> fcfa</td>
 				<tr/>
 				

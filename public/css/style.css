@@ -6,8 +6,6 @@ body{
 	height:auto;
 }
 
-
-
 /*************************La partie header************************************************/
 header > div{
 	height:100px;
@@ -39,6 +37,15 @@ header{
 }
 li:hover > ul{
 	display:block;
+}
+
+nav div div ul li:hover{
+	background-color:orange;
+	font-weight:bold;
+}
+nav div div ul li{
+	font-weight:bold;
+	color:black;
 }
 
 
@@ -161,7 +168,7 @@ img{
 /********************La partie panier***********************/
 
 .panier, .panier th, .panier td, .panier thead{
-		border:5px outset black;
+		border:1px outset black;
 		text-align:center;
 	}
 .panier{
@@ -377,3 +384,13 @@ input {
 	.tableCom thead th:first-child, .tableCli thead th:first-child {
 		border-left: none;
 	}
+
+/* Les messages d'alerts*/
+
+.message{
+	width:100%; 
+	text-align:center;
+}
+.corps div alert{
+	text-align:center;
+}
