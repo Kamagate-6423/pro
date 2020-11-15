@@ -18,7 +18,7 @@
 
 	class PouletsMorts{
 		
-		public function pouletsMortsChairsC(){
+		public function pouletsChairsC(){
 			$req=requete(1,4);
 ?>
 			<div>
@@ -31,7 +31,7 @@
 							<a href="../view/voirProduit.php?id_pro=<?=$donnee['id_pro'];?>"><img src="../public/image/	<?php echo $donnee['image_pro']; ?>" alt="" class="img-responsive">
 							</a>
 						</div>
-						<div class="prix"><?=$donnee['nom_pro']." de "?><?php echo $donnee['inter_poids']." "; ?>l'entier à <?=$donnee['prix']?> fcfa	<br/>
+						<div class="prix" style="z-index:10"><?=$donnee['nom_pro']." de "?><?php echo $donnee['inter_poids']." "; ?>l'entier à <?=$donnee['prix']?> fcfa	<br/>
 						<?php if($donnee['stock']=='En Stock'){ ?>
 								<a href="../controller/requetePanier.php?id=<?=$donnee['id_pro']?>" class="btn btn-primary ajoutPanier"><span class="glyphicon glyphicon-plus" style="color:yellow"></span><span  class="ajoutAuPanier">Ajouter au panier</span></a>
 						<?php  	}else if($donnee['stock']=='Stock epuisé'){ ?>
@@ -49,7 +49,7 @@
 <?php
 		}
 		
-		public function pouletsMortsChairsM(){
+		public function pouletsChairsM(){
 				$req=requete(6,13);
 ?>		
 			<div>
@@ -72,7 +72,7 @@
 
 <?php			
 		}
-		public function pouletsMortsPondeusesC(){
+		public function pouletsPondeuses(){
 			$req=requete(14,15);
 
 ?>
@@ -100,7 +100,7 @@
 
 <?php
 	class PouletsVivants{
-		public function pouletsVivantsChairs(){
+		public function boeuf(){
 		$req=requete(16,19);
 
 ?>
@@ -120,7 +120,7 @@
 <?php
 		}
 		
-		public function pouletsVivantsPondeuses(){
+		public function mouton(){
 		$req=requete(20,21);
 
 ?>
@@ -139,12 +139,12 @@
 			</div>
 <?php
 		}
-		public function pouletsVivantsCokeles(){
+		public function bouc(){
 		$req=requete(22,27);
 
 ?>
 			<div>
-				<fieldset>	<legend>Chèvre</legend>
+				<fieldset>	<legend>Bouc</legend>
 		
 				<?php	 
 			while($donnee=$req->fetch()){
@@ -186,11 +186,11 @@
 
 ?>
 
-<?php /***********************Les oeufs*********************************/ ?>
+<?php /***********************Les Poissons*********************************/ ?>
 
 <?php
 	class Oeufs{
-		public function oeufsPondeuses(){
+		public function poissons(){
 
 		$req=requete(28,32);
 ?>		
@@ -234,14 +234,14 @@
 	
 ?>
 
-<?php /******************Les poussins********************/ ?>
+<?php /******************Les oeufs********************/ ?>
 <?php
 	class Poussins{
-		public function poussinsChairs(){
+		public function oeufs(){
 			$req=requete(33,35);
 
 	?>		<div class="poussins">
-				<fieldset>	<legend> POUSSINS</legend>
+				<fieldset>	<legend> Oeufs</legend>
 					<?php	 
 			while($donnee=$req->fetch()){
 ?>

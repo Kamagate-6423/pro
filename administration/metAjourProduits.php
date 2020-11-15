@@ -11,7 +11,7 @@ include('bdd.php');
 	function requete($debut,$fin)
 		{
 			$bdd= new BDD();
-			$reqSql='SELECT id_pro, image_pro, nom_pro, chemin_desti, inter_poids, prix, stock, info_pro, date_modif FROM produits WHERE id_pro>=? AND id_pro<=? ORDER BY id_pro';
+			$reqSql='SELECT id_pro, image_pro, nom_pro, chemin_desti, inter_poids, prix, stock, info_pro, mot_cle, DATE_FORMAT(date_modif, "%d/%m/%Y") as date_modif FROM produits WHERE id_pro>=? AND id_pro<=? ORDER BY id_pro';
 			$reqVariable=array($debut,$fin);
 			$req = $bdd->requetes($reqSql,$reqVariable);
 			
@@ -45,7 +45,7 @@ include('bdd.php');
 				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
 			</tr>
 			<tr style="margin-bottom:5px">
-				<td><label for="nomProduit">chemin du desti</label></td>
+				<td><label for="nomProduit">destination</label></td>
 				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
 			</tr>
 			<tr>
@@ -63,6 +63,10 @@ include('bdd.php');
 			<tr>
 				<td><label for="description1">Information sur produit</label></td>
 				<td><textarea type="text" id="description" name="description"><?php echo $donnee['info_pro']; ?></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="motCle">Mots clés</label></td>
+				<td><textarea type="text" id="motCle" name="motCle"><?php echo $donnee['mot_cle']; ?></textarea></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -102,6 +106,10 @@ include('bdd.php');
 				<td><label for="nomProduit">Nom du produit</label></td>
 				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
 			</tr>
+			<tr style="margin-bottom:5px">
+				<td><label for="nomProduit">destination</label></td>
+				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
+			</tr>
 			<tr>
 				<td><label for="interPoids1">Intervalle de poids</label></td>
 				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
@@ -117,6 +125,10 @@ include('bdd.php');
 			<tr>
 				<td><label for="description1">Information sur produit</label></td>
 				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="motCle">Mots clés</label></td>
+				<td><textarea type="text" id="motCle" name="motCle"><?php echo $donnee['mot_cle']; ?></textarea></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -159,6 +171,10 @@ include('bdd.php');
 				<td><label for="nomProduit">Nom du produit</label></td>
 				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
 			</tr>
+			<tr style="margin-bottom:5px">
+				<td><label for="nomProduit">destination</label></td>
+				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
+			</tr>
 			<tr>
 				<td><label for="interPoids1">Intervalle de poids</label></td>
 				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
@@ -174,6 +190,10 @@ include('bdd.php');
 			<tr>
 				<td><label for="description1">Information sur produit</label></td>
 				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="motCle">Mots clés</label></td>
+				<td><textarea type="text" id="motCle" name="motCle"><?php echo $donnee['mot_cle']; ?></textarea></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -223,6 +243,10 @@ include('bdd.php');
 				<td><label for="nomProduit">Nom du produit</label></td>
 				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
 			</tr>
+			<tr style="margin-bottom:5px">
+				<td><label for="nomProduit">destination</label></td>
+				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
+			</tr>
 			<tr>
 				<td><label for="interPoids1">Intervalle de poids</label></td>
 				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
@@ -238,6 +262,10 @@ include('bdd.php');
 			<tr>
 				<td><label for="description1">Information sur produit</label></td>
 				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="motCle">Mots clés</label></td>
+				<td><textarea type="text" id="motCle" name="motCle"><?php echo $donnee['mot_cle']; ?></textarea></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -277,7 +305,11 @@ include('bdd.php');
 			</tr>
 			<tr style="margin-bottom:5px">
 				<td><label for="nomProduit">Nom du produit</label></td>
-				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?> class="hidden""/></td>
+				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?> class="hidden"/></td>
+			</tr>
+			<tr style="margin-bottom:5px">
+				<td><label for="nomProduit">destination</label></td>
+				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
 			</tr>
 			<tr>
 				<td><label for="interPoids1">Intervalle de poids</label></td>
@@ -294,6 +326,10 @@ include('bdd.php');
 			<tr>
 				<td><label for="description1">Information sur produit</label></td>
 				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="motCle">Mots clés</label></td>
+				<td><textarea type="text" id="motCle" name="motCle"><?php echo $donnee['mot_cle']; ?></textarea></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -334,6 +370,10 @@ include('bdd.php');
 				<td><label for="nomProduit">Nom du produit</label></td>
 				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
 			</tr>
+			<tr style="margin-bottom:5px">
+				<td><label for="nomProduit">destination</label></td>
+				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
+			</tr>
 			<tr>
 				<td><label for="interPoids1">Intervalle de poids</label></td>
 				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
@@ -349,6 +389,10 @@ include('bdd.php');
 			<tr>
 				<td><label for="description1">Information sur produit</label></td>
 				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="motCle">Mots clés</label></td>
+				<td><textarea type="text" id="motCle" name="motCle"><?php echo $donnee['mot_cle']; ?></textarea></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -395,6 +439,10 @@ include('bdd.php');
 				<td><label for="nomProduit">Nom du produit</label></td>
 				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
 			</tr>
+			<tr style="margin-bottom:5px">
+				<td><label for="nomProduit">destination</label></td>
+				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
+			</tr>
 			<tr>
 				<td><label for="interPoids1">Intervalle de poids</label></td>
 				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
@@ -410,6 +458,10 @@ include('bdd.php');
 			<tr>
 				<td><label for="description1">Information sur produit</label></td>
 				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="motCle">Mots clés</label></td>
+				<td><textarea type="text" id="motCle" name="motCle"><?php echo $donnee['mot_cle']; ?></textarea></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -454,6 +506,10 @@ include('bdd.php');
 				<td><label for="nomProduit">Nom du produit</label></td>
 				<td><input type="text" id="nomProduit" name="nomProduit" value="<?php echo $donnee['nom_pro']; ?>"/></td>
 			</tr>
+			<tr style="margin-bottom:5px">
+				<td><label for="nomProduit">destination</label></td>
+				<td><input type="text" id="nomProduit" name="cheminDesti" value="<?php echo $donnee['chemin_desti']; ?>"/></td>
+			</tr>
 			<tr>
 				<td><label for="interPoids1">Intervalle de poids</label></td>
 				<td><input type="text" id="interPoids1" name="PIntervalle" value="<?php echo $donnee['inter_poids']; ?>"></td>
@@ -469,6 +525,10 @@ include('bdd.php');
 			<tr>
 				<td><label for="description1">Information sur produit</label></td>
 				<td><textarea type="text" id="description" name="description" value="<?php echo $donnee['info_pro']; ?>"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="motCle">Mots clés</label></td>
+				<td><textarea type="text" id="motCle" name="motCle"><?php echo $donnee['mot_cle']; ?></textarea></td>
 			</tr>
 			<tr>
 				<td></td>

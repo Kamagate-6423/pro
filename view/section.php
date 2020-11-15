@@ -63,18 +63,20 @@
 		<section class="section">
 <?php	
 		
-		$reqAc2=requete(4,12);
+		$reqAc2=requete(1,35);
 		while($donneeAc2=$reqAc2->fetch()){
-?>
+			
+			if($donneeAc2['chemin_desti']!=""){
+?>				
 		
 			<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 differentsProduits">
-				<a href="../index/index.php?section=congeletC">
+				<a href="../index/index.php?section=<?=$donneeAc2['chemin_desti']?>">
 					<div class="produit"><img src="../public/image/<?=$donneeAc2['image_pro']?>" class="img-responsive" alt="Poulets prêt à cuire"></div>
 					<div class="description caption"><p><?=$donneeAc2['info_pro']?> </p></div>
 					<div class="plusDeDetails">Voir plus</div>
 				</a>
 			</div>
-<?php
+<?php		}
 		}
 ?>
 		</section>

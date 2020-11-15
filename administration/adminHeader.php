@@ -1,5 +1,10 @@
 <?php session_start(); 
 
+		$jour = array("","dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
+		$mois = Array("", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", 
+									"septembre", "octobre", "novembre", "décembre");
+	
+
 if(!empty($_SESSION['client']['nomAdministrateur'])){
 ?>
 	<!doctype html>
@@ -29,9 +34,13 @@ if(!empty($_SESSION['client']['nomAdministrateur'])){
 				<div class="col-xs-4 col-sm-3 col-md-2 col-lg-3 ">
 					<div class="col-sm-6 col-md-6 col-lg-6"><a href="../controller/detruireSession.php" class="btn btn-warning">Déconnecter</a></div>
 				</div>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <?=$_SESSION['client']['nomAdministrateur']?> <?=$_SESSION['client']['prenomAdministrateur']?> </div>
-				<div class="col-xs-4 col-sm-5 col-md-6 col-lg-5 "> 
-					<div>Vendredi le 13 septembre 2019</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:center"> <?=$_SESSION['client']['nomAdministrateur']?> <?=$_SESSION['client']['prenomAdministrateur']?> </div>
+				<div class="col-xs-4 col-sm-5 col-md-6 col-lg-5 warning" style="height:45px; text-align:center; font-size:20px"> 
+					<div><?php 
+						setlocale(LC_TIME, 'fr_FR.utf8','fra');
+						echo strftime('%A %d %B %Y');
+					?>
+					</div>
 				</div>
 			</div>
 			   <header class="container-fluid">
@@ -80,12 +89,12 @@ if(!empty($_SESSION['client']['nomAdministrateur'])){
 						  <a href="?admin=passeAdmin" class="dropdown-toggle"role="button">passe oublier</a>
 						</li>	
 					 </ul>
-					  <form class="navbar-form navbar-right">
+					  <!--<form class="navbar-form navbar-right">
 						<div class="form-group">
 						  <input type="text" class="form-control" placeholder="Search">
 						</div>
 						<button type="submit" class="btn btn-default">OK</button>
-					  </form>
+					  </form>-->
 						
 					</div><!-- /.navbar-collapse -->
 				  </div><!-- /.container-fluid -->
@@ -110,6 +119,8 @@ if(!empty($_SESSION['client']['nomAdministrateur'])){
 					include('passeAdmin.php');
 				}else if(isset($_POST['changePasse']) || (isset($_POST['identifiant']) && isset($_POST['passe'])) || isset($_GET['newpass'])){
 					include('passeAdmin.php');
+				}else if(isset($_GET['commande']) || isset($_GET['client'])){
+					include('rechercheAdmin.php');
 				} else{
 				include('listeCommandes.php');
 				}

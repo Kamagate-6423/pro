@@ -3,13 +3,19 @@
 	
 	$bdd=new BDD();
 	
-	$reqListe='SELECT id_cli, nom_cli, prenom_cli, tel_cli, email_cli, adresse_cli, date_connexion, date_inscription FROM clients ORDER BY date_inscription DESC';
+	$reqListe='SELECT id_cli, nom_cli, prenom_cli, tel_cli, email_cli, adresse_cli,date_connexion, DAYOFWEEK(date_connexion) as date_connexio, date_inscription FROM clients ORDER BY date_inscription DESC';
 	
 	$req=$bdd->requetes($reqListe);
  
 ?>
 
 <fieldset><legend>LA LISTE DES CLIENTS INSCRITS</legend>
+				<form method="get" action="adminHeader.php" class="navbar-form navbar-center">
+						<div class="form-group">
+						  <input type="text" name="client" class="form" placeholder="recherche de client par tel" style="width:500px; height:30px">
+							<button type="submit" class="btn btn-default">OK</button>
+						</div>
+				</form>
 <table class="tableCli">
 	<thead>
 		<tr>
@@ -27,14 +33,16 @@
 	<tbody>
 	<?php while($donnee=$req->fetch()){ 
 	
-	$jour = array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
-$mois = Array("", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", 
-        "septembre", "octobre", "novembre", "décembre");
+	
 			list($date, $time) = explode(" ", $donnee['date_inscription']);
 			list($year, $month, $day) = explode("-", $date);
 			list($hour, $min, $sec) = explode(":", $time);
 			
-	
+			
+			list($date1, $time1) = explode(" ", $donnee['date_connexion']);
+			list($year1, $month1, $day1) = explode("-", $date1);
+			list($hour1, $min1, $sec1) = explode(":", $time1);
+			 
 	?>
 		<tr>
 			<td><?=$donnee['id_cli'] ?> </td>
@@ -43,8 +51,8 @@ $mois = Array("", "janvier", "février", "mars", "avril", "mai", "juin", "juille
 			<td><?=$donnee['email_cli'] ?> </td>
 			<td><?=$donnee['tel_cli'] ?> </td>
 			<td><?=$donnee['adresse_cli'] ?> </td>
-			<td><?=$donnee['date_inscription'] = "$day/$month/$year $hour:$min";//$donnee['date_inscription'] ?> </td>
-			<td><?=$donnee['date_connexion']?></td>
+			<td><?=$donnee['date_inscription'] = "$day/$month/$year $hour:$min";?> </td>
+			<td><?=$donnee['date_connexion'] = $jour[$donnee['date_connexio']]." $day1/$month1/$year1 $hour1:$min1";?></td>
 		<form method="post" action="requetesSupprimer">
 			<td><input type="number" name="suppCli" value="<?=$donnee['id_cli']?>" class="hidden">
 			<input type="text" name="nom" value="<?=$donnee['nom_cli']?>" class="hidden" >

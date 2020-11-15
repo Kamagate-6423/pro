@@ -69,7 +69,7 @@ if((isset($_POST['nom']) && isset($_POST['tel'])) || (isset($_POST['passe1']) &&
 			<form method="post" action="client.php" role="form" class="motDePassOubli" style="display:none">
 			
 				<fieldset class="field"><legend>Mot de passe oublier<button class="btn btn-danger fermer" style="margin-left:80%"><span class="glyphicon glyphicon-remove"></span></button></legend>
-				<div style="text-align:center">Remplir ces champs pour une rénitialisation de votre mot de passe</div>
+				<div style="text-align:center">Remplir ces champs pour la rénitialisation de votre mot de passe</div>
 					<table>
 						<tr>
 							<td> <label for="nom">Nom</label> </td><td><input type="text" id="nom" name="nom" maxlength="20" required><br/><span class="nom"></span></td>
@@ -92,42 +92,6 @@ if((isset($_POST['nom']) && isset($_POST['tel'])) || (isset($_POST['passe1']) &&
 			</div>
 			
 			<br/>
-			
-			<div class="form">
-			<button type="button "class="btn-warning ouvrePassChanger" style="font-weight:bold; color:#000">Changer mon mot de passe</button>
-			<form method="post" action="client.php" role="form" class="motDePassChanger" style="display:none">
-			
-				<fieldset class="field"><legend>Changer le mot de passe<button class="btn btn-danger fermer1" style="margin-left:80%"><span class="glyphicon glyphicon-remove"></span></button></legend>
-				<div id="passe2DifPasse3" class="passDifferent" >Les deux mots de passes ne sont pas identiques</div>
-				<div style="text-align:center">Remplir ces champs pour modifier votre mot de passe</div>
-					<table>
-						<tr>
-							<td> <label for="tel1"> Numero de téléphone</label></td>
-							<td><input type="tel" id="tel1" name="tel1" placeholder="08877639" maxlength="13" required><br/><span class="help-inline tel1"></span></td>
-						</tr>
-						<tr>
-							<td> <label for="passe1">mot de passe</label> </td>
-							<td>
-								<input type="password" id="passe1" name="passe1" maxlength="16" required><br/><span class="passe1"></span>
-							</td>
-						</tr>
-						<tr>
-							<td> <label for="passe2">Nouveau mot de passe</label> </td><td><input type="password" id="passe2" name="passe2" maxlength="16" required ><br/><span class="passe2"></span></td>
-						</tr>
-						<tr>
-							<td> <label for="passe3"> Confirmer le nouveau</label></td>
-							<td><input type="password" id="passe3" name="passe3" placeholder="08877639" maxlength="16" required><br/><span class="help-inline passe3"></span></td>
-						</tr>
-					</table>
-					<table style="margin-top:20px; width:100%;">
-						<tr>
-							<td colspan="2"><a href="#" class="passChange"><input type="submit" value="Confirmer"  class="passChange btn btn-primary" style="margin-left:50%"></a></td>
-						</tr>
-					</table>
-				</fieldset>	
-			</form>
-			</div>
-			
 	<?php }
 
 		function inscrire(){

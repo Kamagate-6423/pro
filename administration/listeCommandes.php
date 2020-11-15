@@ -11,7 +11,9 @@
 				com.id_cli comIdCli,
 				com.qtes_pro qtes,
 				com.prix_total prixTotal,
-				com.date_liv,
+				com.date_liv dateL,
+				DAYOFWEEK(com.date_liv) dateJ,
+				com.heure_liv heureLiv,
 				com.date_valid dateV
 				FROM commandes AS com, clients AS cli 
 				WHERE com.id_cli = cli.id_cli 
@@ -23,6 +25,12 @@
 ?>
 
 <fieldset><legend>LA LISTE DES COMMANDES</legend>
+				<form method="get" action="adminHeader.php" class="navbar-form navbar-center">
+						<div class="form-group">
+						  <input type="text" name="commande" class="form" placeholder="recherche de commande par tel" style="width:500px; height:30px">
+							<button type="submit" class="btn btn-default">OK</button>
+						</div>
+				</form>
 <table class="tableCom">
 	<thead>
 		<tr>
@@ -31,8 +39,9 @@
 			<th>TEL</th>
 			<th>QUANTITES</th>
 			<th>SOMMES</th>
-			<th>Date de validation</th>
-			<th>VOIR FACTURE</th>
+			<th>Date validation</th>
+			<th>Date livraison</th>
+			<th>FACTURE</th>
 			<th>Supprimer</th>
 		<tr/>
 	</thead>
@@ -44,6 +53,12 @@
 	list($date, $time) = explode(" ", $donnee['dateV']);
 			list($year, $month, $day) = explode("-", $date);
 			list($hour, $min, $sec) = explode(":", $time);
+	
+	list($date1) = explode(" ", $donnee['dateL']);
+			list($year1, $month1, $day1) = explode("-", $date1);
+	
+	list($time1) = explode(" ", $donnee['heureLiv']);
+			list($hour1, $min1, $sec1) = explode(":", $time1);
 			
 	?>
 	
@@ -55,6 +70,7 @@
 			<td><?=array_sum($pQte) ?> Kg</td>
 			<td><?=$donnee['prixTotal'] ?> fcfa</td>
 			<td><?=$donnee['dateV']="$day/$month/$year $hour:$min"?></td>
+			<td><?=$donnee['dateL']=$jour[$donnee['dateJ']]." $day1/$month1/$year1 $hour1:$min1";?> </td>
 			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
 		<form method="post" action="requetesSupprimer.php">
 			<td><input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">

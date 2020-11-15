@@ -267,12 +267,12 @@ $(function(){
 			$(".motDePassOubli").css("display","none");
 		})
 		
-		$(".ouvrePassChanger").click(function(){
+		/*$(".ouvrePassChanger").click(function(){
 			$(".motDePassChanger").css("display","block");
 		})
 		$(".fermer1").click(function(){
 			$(".motDePassChanger").css("display","none");
-		})
+		})*/
 		
 		
 		////admin////

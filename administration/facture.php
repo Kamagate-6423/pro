@@ -9,7 +9,7 @@ include('bdd.php');
 				cli.email_cli email, com.id_cli comIdCli,
 				com.id_com id_com, com.lieux_liv lieux_liv,
 				com.date_liv date_liv, com.heure_liv heure_liv,
-				com.date_liv date_liv, com.heure_liv heure_liv,
+				DAYOFWEEK(com.date_liv) date_J,
 				com.keys_pro keyss, com.qtes_pro qtes,
 				com.prix_total prixTotal
 				FROM commandes AS com, clients AS cli WHERE com.id_cli = cli.id_cli AND com.id_com = ?';
@@ -22,6 +22,8 @@ include('bdd.php');
 	$pKeys=explode(',',$donnee['keyss']); // recupère les clés des produits dans la commande
 	$pQte=explode(',',$donnee['qtes']); // recupère les quentités de chaque produit
 	$somQte=array_sum($pQte);
+	
+	$jour = array("nean", "dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
 	
 	list($date) = explode(" ", $donnee['date_liv']);
 			list($year, $month, $day) = explode("-", $date);
@@ -87,7 +89,7 @@ include('bdd.php');
 						</tr>
 						<tr>
 							<td>Date de livraison</td>
-							<td><?=$donnee['date_liv']="$day/$month/$year"?></td>
+							<td><?=$donnee['date_liv']=$jour[$donnee['date_J']]." $day/$month/$year"?></td>
 						</tr>
 						<tr>
 							<td>Heure de livraison</td>

@@ -36,7 +36,7 @@
 						width:300px;	
 					}
 				  </style>
-						<div class="div12"><h1 style="text-align:center">Votre commande</h1>
+						<div class="div12"><h1 style="text-align:center">Votre commande en cours... </h1>
 							<div>
 								<table class="tab" style='z-index:100'>
 									<tr ><h2 style="background-color:#AAA;">Poulet KAMSA</h2>

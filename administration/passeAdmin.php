@@ -5,7 +5,7 @@ if(isset($_POST['changePasse'])){
 	$bdd=new BDD();
 ?>
 	<fieldset><legend>Modifie le mot de passe</legend>
-		<form method="post" action="adminHeader.php" enctype="multipart/form-data" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<form method="post" action="adminHeader.php?idSup=<?=$_POST['changePasse']?>" enctype="multipart/form-data" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 			<table>
 				<tr>
 					<td><label for="identifiant">Identifiant</label></td>
@@ -42,6 +42,7 @@ if(isset($_POST['changePasse'])){
 	$prenom=verifierDonne($_POST['passePrenom']);
 	$tel=verifierDonne($_POST['passeTel']);
 	$passe=verifierDonne($_POST['passe']);
+	$idSup=verifierDonne($_GET['idSup']);
 	
 	
 	$reqPassN='UPDATE clients SET
@@ -57,10 +58,12 @@ if(isset($_POST['changePasse'])){
 			
 	$bdd->requetes($reqPassN, $varPassN);
 	
+	$bdd->requetes('DELETE FROM passes WHERE id=?',
+				array($idSup));
 	
-	$_SESSION['adminAlert']="Le mot de passe du client ".$prenom." a été modifier à: ".$passe;
+	echo $_SESSION['adminAlert']="Le mot de passe du client ".$prenom." a été modifier à: ".$passe."<br><a href=''>OK</a>";
 	
-		header("location:adminHeader.php");
+		//header("location:adminHeader.php");
 		
 }else{include('bdd.php');
 	$bdd=new BDD();
@@ -84,9 +87,7 @@ if(isset($_POST['changePasse'])){
 	<tbody>
 	<?php while($donnee=$req->fetch()){ 
 	
-	$jour = array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
-$mois = Array("", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", 
-        "septembre", "octobre", "novembre", "décembre");
+
 			list($date, $time) = explode(" ", $donnee['date_message']);
 			list($year, $month, $day) = explode("-", $date);
 			list($hour, $min, $sec) = explode(":", $time);
@@ -97,7 +98,7 @@ $mois = Array("", "janvier", "février", "mars", "avril", "mai", "juin", "juille
 			<td><?=$donnee['nom'] ?> </td>
 			<td><?=$donnee['prenom'] ?> </td>
 			<td><?=$donnee['tel'] ?> </td>
-			<td><?=$donnee['date_message'] = "$day/$month/$year $hour:$min";//$donnee['date_inscription'] ?> </td>
+			<td><?=$donnee['date_message'] = "$day/$month/$year $hour:$min";?> </td>
 		<form method="post" action="adminHeader.php">
 			<td><input type="number" name="changePasse" value="<?=$donnee['id']?>" class="hidden"><button type="submit" class="btn-warning"><span class="glyphicon glyphicon-pencil"></span></button></td>
 		</form>

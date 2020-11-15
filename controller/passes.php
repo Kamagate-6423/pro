@@ -1,10 +1,12 @@
 <?php
-session_start();
 include('../administration/bdd.php'); 
 
 $bdd= new BDD();
 	$votrePasse="";
 	$votrePasse1="";
+	
+	
+	// *************** Mot de passe oublier
 if(isset($_POST['nom']) && isset($_POST['tel']) && isset($_POST['prenom'])){
 	$nom=verifierDonne($_POST['nom']);
 	$prenom=verifierDonne($_POST['prenom']);
@@ -30,14 +32,23 @@ if(isset($_POST['nom']) && isset($_POST['tel']) && isset($_POST['prenom'])){
 	}else{
 		$votrePasse1="Nom ou numero de tel: incorrect";
 	}
-		
+	
+	unset($_SESSION['insciption']);
+	unset($_SESSION['connexion']);
+	unset($_SESSION['connexionEchouer']);
+
+	$_SESSION['votrePasse1']=$votrePasse1;
+	$_SESSION['votrePasse']=$votrePasse;
+	header("location:client.php");
+	
+	// *******************   Modifier mot de passe
 }elseif(isset($_POST['passe1']) && isset($_POST['passe2']) && isset($_POST['passe3']) && isset($_POST['tel1'])){
 		$tel1=verifierDonne($_POST['tel1']);
 		$passe1=verifierDonne($_POST['passe1']);
 		$passe2=verifierDonne($_POST['passe2']);
 		$passe3=verifierDonne($_POST['passe3']);
 		
-		$tel1=substr($telCli,-8);
+		$tel1=substr($tel1,-8);
 		
 	$reqListe='SELECT tel_cli FROM clients WHERE tel_cli=? AND pass_cli=?';//initier pour vérifier si le numero existe dans la base
 	$req1=$bdd->requetes($reqListe,array($tel1, $passe1)); // la class bdd est definie dans dossier administration
@@ -60,13 +71,18 @@ if(isset($_POST['nom']) && isset($_POST['tel']) && isset($_POST['prenom'])){
 		}else{
 			$votrePasse1="Numero de tel ou mot de passe: incorrect";
 		}
+		
 	}else{
 		$votrePasse1="Numero de tel ou mot de passe: incorrect";
 	}
+	
+	$_SESSION['votrePasse1']=$votrePasse1;
+	$_SESSION['votrePasse']=$votrePasse;
+
+	header("location:../index/index.php?modifierPasse=modifierPasse");
 }else{
 	$votrePasse1="Votre demande n'a pas été traité ni enregistré: contactez nous au : 0022564230411";
-}
-
+	
 	unset($_SESSION['insciption']);
 	unset($_SESSION['connexion']);
 	unset($_SESSION['connexionEchouer']);
@@ -74,3 +90,6 @@ if(isset($_POST['nom']) && isset($_POST['tel']) && isset($_POST['prenom'])){
 	$_SESSION['votrePasse1']=$votrePasse1;
 	$_SESSION['votrePasse']=$votrePasse;
 	header("location:client.php");
+}
+
+	

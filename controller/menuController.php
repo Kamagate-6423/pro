@@ -12,10 +12,10 @@
 			$menu1=verifierDonne($_GET['menu1']);
 			if(isset($menu1)){
 				if($menu1=='pouletsMortsChairs'){
-					$pouletsMorts->pouletsMortsChairsC();
-					$pouletsMorts->pouletsMortsChairsM();
+					$pouletsMorts->pouletsChairsC();
+					$pouletsMorts->pouletsChairsM();
 				}else if($menu1=='pouletsMortsPondeuses'){
-					$pouletsMorts->pouletsMortsPondeusesC();
+					$pouletsMorts->pouletsPondeuses();
 				}else{
 					require('../index/index.php');
 				}
@@ -27,11 +27,11 @@
 			$menu2=verifierDonne($_GET['menu2']);
 			if(isset($menu2)){
 				if($menu2=='pouletsVivantsChairs'){
-					$pouletsVivants->pouletsVivantsChairs();
+					$pouletsVivants->boeuf();
 				}else if($menu2=='pouletsVivantsPondeuses'){
-					$pouletsVivants->pouletsVivantsPondeuses();
+					$pouletsVivants->mouton();
 				}else if($menu2=='pouletsVivantsCokeles'){
-					$pouletsVivants->pouletsVivantsCokeles();
+					$pouletsVivants->bouc();
 					//$pouletsVivants->pouletsVivantsAfricains();
 				}else{
 					require('../index/index.php');
@@ -44,7 +44,7 @@
 			$menu3=verifierDonne($_GET['menu3']);
 			if(isset($menu3)){
 				if($menu3=='oeufsPondeuses'){
-					$oeufs->oeufsPondeuses();
+					$oeufs->poissons();
 					//$oeufs->oeufsAfricains();
 				}else{
 					require('../index/index.php');
@@ -57,7 +57,7 @@
 			$menu4=verifierDonne($_GET['menu4']);
 			if(isset($menu4)){
 				if($menu4=='poussinsChairs'){
-					$poussins->poussinsChairs();
+					$poussins->oeufs();
 				}else{
 					require('../index/index.php');
 				}
@@ -67,30 +67,32 @@
 		if(isset($_GET['section'])){ 
 			$section=verifierDonne($_GET['section']);
 			if(isset($section)){
-				if($section=='poussins'){
-					$poussins->poussinsChairs();
-				}else if($section=='chairs'){
-					$pouletsVivants->pouletsVivantsChairs();
-					$pouletsMorts->pouletsMortsChairsC();
-					$pouletsMorts->pouletsMortsChairsM();
-				}else if($section=='congeletC'){
-					$pouletsMorts->pouletsMortsChairsC();
-				}else if($section=='congeletM'){
-					$pouletsMorts->pouletsMortsChairsM();
-				}else if($section=='oeufs'){
-					$oeufs->oeufsPondeuses();
-					$oeufs->oeufsAfricains();
+				if($section=='oeufs'){
+					$poussins->oeufs();
+				}else if($section=='pouletCom'){
+					$pouletsMorts->pouletsChairsC();
+					$pouletsMorts->pouletsChairsM();
+				}else if($section=='pouletMor'){
+					$pouletsMorts->pouletsChairsM();
+					$pouletsMorts->pouletsChairsC();
+				}else if($section=='poissons'){
+					$oeufs->poissons();
 				}else if($section=='pondeuses'){
-					$pouletsVivants->pouletsVivantsPondeuses();
-					$pouletsMorts->pouletsMortsPondeusesC();
-				}else if($section=='cokeles'){
-					$pouletsVivants->pouletsVivantsCokeles();
-				}else if($section=='africains'){
-					$pouletsVivants->pouletsVivantsAfricains();
+					$pouletsMorts->pouletsPondeuses();
+				}else if($section=='boeuf'){
+					$pouletsVivants->boeuf();
+				}else if($section=='mouton'){
+					$pouletsVivants->mouton();
+				}else if($section=='bouc'){
+					$pouletsVivants->bouc();
 				}else{
 					require('../index/index.php');
 				}
 			}
+		}
+		
+		if(isset($_GET['recherche'])){
+			include("../view/recherche.php");
 		}
 	?>
 	</div>

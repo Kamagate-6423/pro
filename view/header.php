@@ -33,11 +33,17 @@
 	<div class="corp">
 		<div class="container-fluid sociaux" style="padding-left:0px; padding-right:0px">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="padding-left:0px">
-				<?php if(isset($_SESSION['connexion'])){ ?>
+				<?php 
+				//$_SESSION['connexion']="connextion";
+				if(isset($_SESSION['connexion'])){ ?>
 				<div class="col-sm-12 col-md-12 col-lg-12">
 					<form method="post" action="../controller/detruireSession.php">
 					<input type="number" name="idCli" value="<?=$_SESSION['client']['idClien']?>" class="hidden">
 					<button type="submit" class="btn-warning">Deconnecter</button>
+					</form>
+					<form method="post" action="../index/index.php">
+					<input type="text" name="modifierPasse" value="modifierPasse" class="hidden">
+					<button type="submit" class="btn-warning">Modifier mot de passe</button>
 					</form>
 					<!--a class="btn btn-warning" style="height:30px" href="../controller/detruireSession.php" class="deconnecter">Deconnecter</a-->
 				</div>
@@ -58,7 +64,7 @@
 <?php } ?>
 
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 " style="padding-right:0px;"> 
-				<div class="col-sm-7 col-md-6 col-lg-6"><a href="../view/panier.php" class="btn btn-warning" 			style="height:30px; font-weight:bold" ><span class="glyphicon  glyphicon-shopping-cart"></span> Panier</a>:<span id="compt"><span class="compt"><?=$panier->compt()?></span><span style="color:orange" >Kg</span></span>
+				<div class="col-sm-7 col-md-6 col-lg-6"><a href="../view/panier.php" class="btn btn-warning" 			style="height:30px; font-weight:bold" ><span class="glyphicon  glyphicon-shopping-cart"></span> Panier</a>:<span id="compt"><span class="compt"><?=$panier->compt()?></span></span>
 				</div>
 				<div class="col-sm-5 col-md-6 col-lg-6"><span id="total">Total: <?=$panier->total()?>					 	<span style="color:orange">fcfa</span></span></br>
 <?php  				
@@ -121,18 +127,22 @@
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				  <ul class="nav navbar-nav">
-					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Poulets<span class="caret"></span></a>
+				  <ul class="nav navbar-nav" >
+					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Volailles<span class="caret"></span></a>
 					  <ul class="dropdown-menu">
-						<li><a href="../index/index.php?menu1=pouletsMortsChairs">Poulets de chair</a></li>
-						<li><a href="../index/index.php?menu1=pouletsMortsPondeuses">Poulets pondeuses</a></li>
+						<li><a href="../index/index.php?menu1=pouletsMortsChairs">Poulet de chair</a></li>
+						<li><a href="../index/index.php?menu1=pouletsMortsPondeuses">Poulet pondeuse</a></li>
+						<li><a href="../index/index.php?menu1=pouletsMortsPondeuses">Poulet côkélé</a></li>
+						<li><a href="../index/index.php?menu1=pouletsMortsPondeuses">Poulet africain</a></li>
+						<li><a href="../index/index.php?menu1=pouletsMortsPondeuses">Pintadre</a></li>
+						<li><a href="../index/index.php?menu1=pouletsMortsPondeuses">Canard</a></li>
 					  </ul>
 					</li>
 					<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bétails <span class="caret"></span></a>
 					  <ul class="dropdown-menu">
-						<li><a href="../index/index.php?menu2=pouletsVivantsChairs">Bœuf</a></li>
-						<li><a href="../index/index.php?menu2=pouletsVivantsPondeuses">Mouton</a></li>
-						<li><a href="../index/index.php?menu2=pouletsVivantsCokeles">Chèvre</a></li>
+						<li><a href="../index/index.php?menu2=pouletsVivantsChairs">Viande de Bœuf</a></li>
+						<li><a href="../index/index.php?menu2=pouletsVivantsPondeuses">Viande de Mouton</a></li>
+						<li><a href="../index/index.php?menu2=pouletsVivantsCokeles">Viande de Bouc</a></li>
 					  </ul>
 					</li>
 					<li class="dropdown">
@@ -143,13 +153,13 @@
 					  </a>
 					</li>
 					<li>
-					  <a href="../index/index.php?menu4=poussinsChairs" class="dropdown-toggle"role="button"> Présentation
+					  <a href="../index/index.php?menu4=poussinsChairs" class="dropdown-toggle"role="button"> A propos
 					  </a>
 					</li>
 				  </ul>
-				  <form class="navbar-form navbar-right">
+				  <form method="get" action="../index/index.php" class="navbar-form navbar-right">
 					<div class="form-group">
-					  <input type="text" class="form-control" placeholder="Search">
+					  <input type="text" name="recherche" class="form-control" placeholder="Search">
 					</div>
 					<button type="submit" class="btn btn-default">OK</button>
 				  </form>
