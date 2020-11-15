@@ -1,2 +1,2 @@
 # projet
-Site e-commerce pour la vente de charcuterie
+Site e-commerce pour la charcuterie
