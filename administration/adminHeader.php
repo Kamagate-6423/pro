@@ -1,5 +1,5 @@
 <?php session_start(); 
-
+		// pour donner les date en français
 		$jour = array("","dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
 		$mois = Array("", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", 
 									"septembre", "octobre", "novembre", "décembre");
@@ -87,7 +87,10 @@ if(!empty($_SESSION['client']['nomAdministrateur'])){
 						</li>	
 						<li>
 						  <a href="?admin=passeAdmin" class="dropdown-toggle"role="button">passe oublier</a>
-						</li>	
+						</li>
+						<li>
+						  <a href="?admin=infoLine" class="dropdown-toggle"role="button">Information </a>
+						</li>						
 					 </ul>
 					  <!--<form class="navbar-form navbar-right">
 						<div class="form-group">
@@ -121,6 +124,8 @@ if(!empty($_SESSION['client']['nomAdministrateur'])){
 					include('passeAdmin.php');
 				}else if(isset($_GET['commande']) || isset($_GET['client'])){
 					include('rechercheAdmin.php');
+				}else if(isset($_GET['admin'])&& $_GET['admin']=='infoLine'){
+					include('infoLine.php');
 				} else{
 				include('listeCommandes.php');
 				}

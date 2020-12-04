@@ -15,7 +15,9 @@
 
  <div class="voirProduit">
 	<?php while($donnee=$reqVoirProduit->fetch()){?>
-		<div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 voirImage" ><img src="../public/image/<?=$donnee['image_pro']?>" alt="" class="img-responsive"></div>
+		<div class="col-xs-12 col-sm-7 col-md-6 col-lg-6 voirImage" >
+			<img src="../public/image/<?=$donnee['image_pro']?>" alt="" class="img-responsive">
+		</div>
 		<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6 voirDescript"> <h4><?=$donnee['nom_pro']?></h4>Des <?=$donnee['nom_pro']?> dont le poids varie de <?=$donnee['inter_poids']?> coût <?=$donnee['prix']?>fcfa/Kg</div>
 	
 		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 Retour"><a href="javascript:history.back()"><button class="btn btn-primary">Retour aux produits</button></a></div>

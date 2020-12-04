@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<section class="container-fluid">
 		 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div id="carousselDuSite" class="carousel slide" data-ride="carousel">
+			<div id="carousselDuSite" class="carousel slide" data-ride="carousel" style="height:auto">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
 				<li data-target="#carousselDuSite" data-slide-to="0" class="active"></li>

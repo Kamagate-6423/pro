@@ -64,6 +64,17 @@
 			}
 		}
 		
+		if(isset($_GET['menu5'])){ 
+			$menu5=verifierDonne($_GET['menu5']);
+			if(isset($menu5)){
+				if($menu5=='apropos'){
+					require('../view/apropos.php');
+				}else{
+					require('../index/index.php');
+				}
+			}
+		}
+		
 		if(isset($_GET['section'])){ 
 			$section=verifierDonne($_GET['section']);
 			if(isset($section)){

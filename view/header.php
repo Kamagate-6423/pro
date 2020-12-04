@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vente de poulets</title>
+    <title>De la chaire fraîche</title>
 	
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<link rel="stylesheet" href="../public/css/style.css">
@@ -29,8 +29,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body >
-	<div class="corp">
+  <body class="corps">
+	<div class="corps">
 		<div class="container-fluid sociaux" style="padding-left:0px; padding-right:0px">
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="padding-left:0px">
 				<?php 
@@ -153,7 +153,7 @@
 					  </a>
 					</li>
 					<li>
-					  <a href="../index/index.php?menu4=poussinsChairs" class="dropdown-toggle"role="button"> A propos
+					  <a href="../index/index.php?menu5=apropos" class="dropdown-toggle"role="button"> A propos
 					  </a>
 					</li>
 				  </ul>
@@ -166,5 +166,15 @@
 				</div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
+<?php // pour inserer l'info-line
+
+	$reqInfo='SELECT info FROM information WHERE categorie=:cate';
+		$varInfo=array(
+				'cate'=>"infoLine"
+		);
+		$infoLine = $bdd->requetes($reqInfo,$varInfo);
+		$donneInfoLine=$infoLine->fetch();
+?>
+			<div style="margin-top:-15px"><?=$donneInfoLine['info']?></div>
 
   
