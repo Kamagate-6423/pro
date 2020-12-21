@@ -61,9 +61,15 @@
 			list($hour1, $min1, $sec1) = explode(":", $time1);
 			
 	?>
-	
-	
-		<tr>
+	<?php
+			$dateL=strtotime($date1)+$hour1*60*60+$min1*60+$sec1;
+			$dateDiff=$dateL-(time()+3600);
+?>
+<?php	
+	if($dateDiff<0){
+		
+	?>
+		<tr style="background-color:green">
 			<td><?=$donnee['nom'] ?> </td>
 			<td><?=$donnee['prenom'] ?> </td>
 			<td><?=$donnee['tel'] ?> </td>
@@ -73,13 +79,124 @@
 			<td><?=$donnee['dateL']=$jour[$donnee['dateJ']]." $day1/$month1/$year1 $hour1:$min1";?> </td>
 			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
 		<form method="post" action="requetesSupprimer.php">
-			<td><input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">
-			<input type="text" name="nom" value="<?=$donnee['nom']?>" class="hidden" >
-			<input type="text" name="prenom" value="<?=$donnee['prenom']?>" class="hidden">
-			<button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button></td>
+			<td>
+				<input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">
+				<input type="text" name="nom" value="<?=$donnee['nom']?>" class="hidden" >
+				<input type="text" name="prenom" value="<?=$donnee['prenom']?>" class="hidden">
+				<button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+			</td>
 		</form>
 		</tr>
-	<?php	} 	
+<?php
+	}else if($dateDiff<1800){
+	?>
+		<tr style="background-color:red">
+			<td><?=$donnee['nom'] ?> </td>
+			<td><?=$donnee['prenom'] ?> </td>
+			<td><?=$donnee['tel'] ?> </td>
+			<td><?=array_sum($pQte) ?> Kg</td>
+			<td><?=$donnee['prixTotal'] ?> fcfa</td>
+			<td><?=$donnee['dateV']="$day/$month/$year $hour:$min"?></td>
+			<td><?=$donnee['dateL']=$jour[$donnee['dateJ']]." $day1/$month1/$year1 $hour1:$min1";?> </td>
+			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
+		<form method="post" action="requetesSupprimer.php">
+			<td>
+				<input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">
+				<input type="text" name="nom" value="<?=$donnee['nom']?>" class="hidden" >
+				<input type="text" name="prenom" value="<?=$donnee['prenom']?>" class="hidden">
+				<button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+			</td>
+		</form>
+		</tr>
+<?php
+	}else if($dateDiff<3600){
+	?>
+		<tr style="background-color:orange">
+			<td><?=$donnee['nom'] ?> </td>
+			<td><?=$donnee['prenom'] ?> </td>
+			<td><?=$donnee['tel'] ?> </td>
+			<td><?=array_sum($pQte) ?> Kg</td>
+			<td><?=$donnee['prixTotal'] ?> fcfa</td>
+			<td><?=$donnee['dateV']="$day/$month/$year $hour:$min"?></td>
+			<td><?=$donnee['dateL']=$jour[$donnee['dateJ']]." $day1/$month1/$year1 $hour1:$min1";?> </td>
+			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
+		<form method="post" action="requetesSupprimer.php">
+			<td>
+				<input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">
+				<input type="text" name="nom" value="<?=$donnee['nom']?>" class="hidden" >
+				<input type="text" name="prenom" value="<?=$donnee['prenom']?>" class="hidden">
+				<button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+			</td>
+		</form>
+		</tr>
+<?php
+	}else if($dateDiff<5400){
+	?>
+		<tr style="background-color:yellow">
+			<td><?=$donnee['nom'] ?> </td>
+			<td><?=$donnee['prenom'] ?> </td>
+			<td><?=$donnee['tel'] ?> </td>
+			<td><?=array_sum($pQte) ?> Kg</td>
+			<td><?=$donnee['prixTotal'] ?> fcfa</td>
+			<td><?=$donnee['dateV']="$day/$month/$year $hour:$min"?></td>
+			<td><?=$donnee['dateL']=$jour[$donnee['dateJ']]." $day1/$month1/$year1 $hour1:$min1";?> </td>
+			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
+		<form method="post" action="requetesSupprimer.php">
+			<td>
+				<input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">
+				<input type="text" name="nom" value="<?=$donnee['nom']?>" class="hidden" >
+				<input type="text" name="prenom" value="<?=$donnee['prenom']?>" class="hidden">
+				<button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+			</td>
+		</form>
+		</tr>
+<?php
+	}else if($dateDiff<7200){
+	?>
+		<tr style="background-color:blue">
+			<td><?=$donnee['nom'] ?> </td>
+			<td><?=$donnee['prenom'] ?> </td>
+			<td><?=$donnee['tel'] ?> </td>
+			<td><?=array_sum($pQte) ?> Kg</td>
+			<td><?=$donnee['prixTotal'] ?> fcfa</td>
+			<td><?=$donnee['dateV']="$day/$month/$year $hour:$min"?></td>
+			<td><?=$donnee['dateL']=$jour[$donnee['dateJ']]." $day1/$month1/$year1 $hour1:$min1";?> </td>
+			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
+		<form method="post" action="requetesSupprimer.php">
+			<td>
+				<input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">
+				<input type="text" name="nom" value="<?=$donnee['nom']?>" class="hidden" >
+				<input type="text" name="prenom" value="<?=$donnee['prenom']?>" class="hidden">
+				<button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+			</td>
+		</form>
+		</tr>
+<?php
+	}else{
+?>
+	
+	
+	
+		<tr>
+			<td><?=$donnee['nom'] ?> </td>
+			<td><?=$donnee['prenom'] ?> </td>
+			<td><?=$donnee['tel'] ?> </td>
+			<td><?=array_sum($pQte) ?> Kg</td>
+			<td><?=$donnee['prixTotal'] ?> fcfa</td>
+			<td><?=$donnee['dateV']="$day/$month/$year $hour $min"?></td>
+			<td><?=$donnee['dateL']=$jour[$donnee['dateJ']]." $day1/$month1/$year1 $hour1:$min1";?> </td>
+			<td><a href="facture.php?id_com=<?=$donnee['id_com']?>">Afficher</a> </td>
+		<form method="post" action="requetesSupprimer.php">
+			<td>
+				<input type="number" name="suppCom" value="<?=$donnee['id_com']?>" class="hidden">
+				<input type="text" name="nom" value="<?=$donnee['nom']?>" class="hidden" >
+				<input type="text" name="prenom" value="<?=$donnee['prenom']?>" class="hidden">
+				<button type="submit" class="btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+			</td>
+		</form>
+		</tr>
+	<?php	}	
+	} 	
 	$req->closeCursor();
 	?>
 	</tbody>

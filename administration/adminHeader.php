@@ -90,7 +90,7 @@ if(!empty($_SESSION['client']['nomAdministrateur'])){
 						</li>
 						<li>
 						  <a href="?admin=infoLine" class="dropdown-toggle"role="button">Information </a>
-						</li>						
+						</li>				
 					 </ul>
 					  <!--<form class="navbar-form navbar-right">
 						<div class="form-group">

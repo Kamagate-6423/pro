@@ -11,10 +11,6 @@ if(isset($_POST['changePasse'])){
 					<td><label for="identifiant">Identifiant</label></td>
 					<td><input type="number" id="identifiant" name="identifiant" required></td>
 				</tr>
-				<tr>
-					<td><label for="passePrenom">Prenom</label></td>
-					<td><input type="text" id="passePrenom" name="passePrenom" required></td>
-				</tr>
 				<tr style="margin-bottom:5px">
 					<td><label for="passeTel">Tel</label></td>
 					<td><input type="tel" id="passeTel" name="passeTel" required /></td>
@@ -39,7 +35,6 @@ if(isset($_POST['changePasse'])){
 
 	
 	$id=verifierDonne($_POST['identifiant']);
-	$prenom=verifierDonne($_POST['passePrenom']);
 	$tel=verifierDonne($_POST['passeTel']);
 	$passe=verifierDonne($_POST['passe']);
 	$idSup=verifierDonne($_GET['idSup']);
@@ -47,11 +42,10 @@ if(isset($_POST['changePasse'])){
 	
 	$reqPassN='UPDATE clients SET
 					pass_cli = :passe
-					WHERE id_cli=:id AND tel_cli=:tel AND prenom_cli=:prenom';
+					WHERE id_cli=:id AND tel_cli=:tel';
 					
 	$varPassN= array(
 			'passe' =>$passe,
-			'prenom' =>$prenom,
 			'tel' =>$tel,
 			'id'=>$id
 			);
@@ -61,11 +55,13 @@ if(isset($_POST['changePasse'])){
 	$bdd->requetes('DELETE FROM passes WHERE id=?',
 				array($idSup));
 	
-	echo $_SESSION['adminAlert']="Le mot de passe du client ".$prenom." a été modifier à: ".$passe."<br><a href=''>OK</a>";
+	 $_SESSION['adminAlert']="Le mot de passe du client au ".$tel." a été modifier à: ".$passe;
+	echo '<div class="alert alert-success adminAlert1" style="text-align:center;">'.$_SESSION['adminAlert'].'<a href="adminHeader.php"><span class=" btn btn-danger glyphicon glyphicon-remove" id="adminAlert1" style="margin-left:10%"></span></a></div>';
 	
 		//header("location:adminHeader.php");
 		
-}else{include('bdd.php');
+}else{
+	include('bdd.php');
 	$bdd=new BDD();
 	$reqListe='SELECT id, nom, prenom, tel, date_message FROM passes ORDER BY date_message DESC';
 	

@@ -10,26 +10,28 @@ include('bdd.php');
 	
 	$tmp =""; ///file_get_contents($_FILES['image']['tmp_name']);
 	
-	$identifiant= verifierDonne($_POST['identifiant']);
+	$categorie= verifierDonne($_POST['categorie']);
 	$nomProduit= verifierDonne($_POST['nomProduit']);
 	$PIntervalle= verifierDonne($_POST['PIntervalle']);
 	$poidsPrix = verifierDonne($_POST['poidsPrix']);
 	$stock1= verifierDonne($_POST['stock']);
 	$description = verifierDonne($_POST['description']);
 	$chemin= verifierDonne($_POST['chemin']);
+	$motCle= verifierDonne($_POST['motCle']);
 		
 		
 		$bdd=new BDD();
-		$bdd->requetes('INSERT INTO produits(id_pro,image_pro,nom_pro,inter_poids,prix,stock,info_pro,binaire, chemin_desti, date_modif)
-				VALUES(:id_pro,:image, :image_nom, :intervalle, :poidsPrix, :stock, :descrip, :binaire, :chemin, NOW())',
+		$bdd->requetes('INSERT INTO produits(image_pro,categorie,nom_pro,inter_poids,prix,stock,info_pro, mot_cle,binaire, chemin_desti, date_modif)
+				VALUES(:image, :categorie, :image_nom, :intervalle, :poidsPrix, :stock, :descrip, :motCle, :binaire, :chemin, NOW())',
 				array(
-			'id_pro'=>$identifiant,
 			'image'=>$nomImage,
+			'categorie'=>$categorie,
 			'image_nom'=>$nomProduit,
 			'intervalle'=>$PIntervalle,
 			'poidsPrix'=>$poidsPrix,
 			'stock'=>$stock1,
 			'descrip'=>$description,
+			'motCle'=>$motCle,
 			'binaire'=>$tmp,
 			'chemin'=>$chemin));
 			

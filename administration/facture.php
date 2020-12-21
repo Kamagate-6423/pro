@@ -119,7 +119,7 @@ include('bdd.php');
 			
 			for($i=0;$i<sizeof($pKeys);$i++){ //permet de parcourir les clies des produits
 				$image_id=$pKeys[$i]; 
-				$reqInfo1='SELECT id_pro, image_pro, nom_pro, inter_poids, prix FROM produits WHERE id_pro=:image_id';
+				$reqInfo1='SELECT id_pro, image_pro, categorie, nom_pro, inter_poids, prix FROM produits WHERE id_pro=:image_id';
 				$variableInfo1=array('image_id'=>$image_id);
 				
 				$req1=$bdd->requetes($reqInfo1,$variableInfo1);
@@ -130,7 +130,7 @@ include('bdd.php');
 					<!--<td><img src="../image/<?=$donnee1['image_pro']?>" alt="" style="width:100px"></td>-->
 					<td><?=$donnee1['nom_pro']?><br><?=$donnee1['inter_poids']?></td>
 					<td><?=$qte=$pQte[$i]; ?> <?php 
-						if($donnee1['id_pro']<=4){
+						if($donnee1['categorie']=="Pchair" || $donnee1['categorie']=="Ppondeuse"){
 							
 							//nean
 						}else{
@@ -142,14 +142,27 @@ include('bdd.php');
 			<?php 
 				$total+=$total1;
 			}  
-			
 			?>
 			</tbody>
 			<tfoot>
-				<td colspan="2">TOTAL </td>
+				<td colspan="2"><strong>Sous-total</strong> </td>
 				<td><strong> <?=$total?> fcfa</strong> </td>
 			</tfoot>
-		</table>
+			</table>
+		
+			<table style="margin-top:20px; height:50px" class="facture">
+				<tr>
+					<td> Frais de livraison <br/>(A partie de 5OOO fcfa la livraison est gratuite)</td>
+					<td style="font-weight:bold"><?php if($total>=5000){$frais=0;}else{$frais=400;} echo $frais; ?> fcfa</td>
+				</tr>
+			</table>
+				
+			<table style="margin-top:10px; font-weight:bold; font-size:30px" class="facture">
+				<tr>
+					<td> TOTAL </td>
+					<td><?=$total+$frais;?> fcfa </td>
+				</tr>
+			</table>
 
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script type="text/javascript" src="../public/css/jquery-3.3.1.js"></script>
