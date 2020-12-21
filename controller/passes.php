@@ -7,15 +7,15 @@ $bdd= new BDD();
 	
 	
 	// *************** Mot de passe oublier
-if(isset($_POST['nom']) && isset($_POST['tel']) && isset($_POST['prenom'])){
+if(isset($_POST['tel']) && isset($_POST['nom'])){
+	$tel=verifierDonne($_POST['tel']);
 	$nom=verifierDonne($_POST['nom']);
 	$prenom=verifierDonne($_POST['prenom']);
-	$tel=verifierDonne($_POST['tel']);
 	
 	$tel=substr($tel,-8);
 	
 	$reqListe='SELECT tel_cli FROM clients WHERE tel_cli=? AND nom_cli=?';//initier pour vérifier si le numero existe dans la base
-	$req1=$bdd->requetes($reqListe,array($tel, $nom)); // la class bdd est definie dans dossier administration
+	$req1=$bdd->requetes($reqListe,array($tel,$nom)); // la class bdd est definie dans dossier administration
 	$donnee1=$req1->fetch();
 	
 	if(!empty($donnee1['tel_cli'])){

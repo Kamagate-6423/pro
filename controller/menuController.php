@@ -14,8 +14,19 @@
 				if($menu1=='pouletsMortsChairs'){
 					$pouletsMorts->pouletsChairsC();
 					$pouletsMorts->pouletsChairsM();
+				}else if($menu1=='Mchairs'){
+					$pouletsMorts->pouletsChairsM();
+					$pouletsMorts->pouletsChairsC();
 				}else if($menu1=='pouletsMortsPondeuses'){
 					$pouletsMorts->pouletsPondeuses();
+				}else if($menu1=='cokeles'){
+					$pouletsMorts->cokeles();
+				}else if($menu1=='pafricains'){
+					$pouletsMorts->pafricains();
+				}else if($menu1=='pintades'){
+					$pouletsMorts->pintades();
+				}else if($menu1=='canards'){
+					$pouletsMorts->canards();
 				}else{
 					require('../index/index.php');
 				}
@@ -64,10 +75,22 @@
 			}
 		}
 		
+		$condiments=new Condiments();
 		if(isset($_GET['menu5'])){ 
 			$menu5=verifierDonne($_GET['menu5']);
 			if(isset($menu5)){
-				if($menu5=='apropos'){
+				if($menu5=='condiments'){
+					$condiments->fcondiments();
+				}else{
+					require('../index/index.php');
+				}
+			}
+		}
+		
+		if(isset($_GET['menu6'])){ 
+			$menu6=verifierDonne($_GET['menu6']);
+			if(isset($menu6)){
+				if($menu6=='apropos'){
 					require('../view/apropos.php');
 				}else{
 					require('../index/index.php');
@@ -86,16 +109,26 @@
 				}else if($section=='pouletMor'){
 					$pouletsMorts->pouletsChairsM();
 					$pouletsMorts->pouletsChairsC();
+				}else if($section=='cokeles'){
+					$pouletsMorts->cokeles();
+				}else if($section=='pafricains'){
+					$pouletsMorts->pafricains();
+				}else if($section=='pintades'){
+					$pouletsMorts->pintades();
+				}else if($section=='canards'){
+					$pouletsMorts->canards();
 				}else if($section=='poissons'){
 					$oeufs->poissons();
 				}else if($section=='pondeuses'){
 					$pouletsMorts->pouletsPondeuses();
-				}else if($section=='boeuf'){
+				}else if($section=='boeufs'){
 					$pouletsVivants->boeuf();
-				}else if($section=='mouton'){
+				}else if($section=='moutons'){
 					$pouletsVivants->mouton();
-				}else if($section=='bouc'){
+				}else if($section=='boucs'){
 					$pouletsVivants->bouc();
+				}else if($section=='condiments'){
+					$condiments->fcondiments();
 				}else{
 					require('../index/index.php');
 				}

@@ -6,7 +6,7 @@ session_start();
 $bdd= new BDD();
 
 
-if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf'] ){
+if(isset($_GET['inscription']) && ($_POST['passCli']===$_POST['passCliConf'])){
 	$nomCli=verifierDonne($_POST['nomCli']);
 	$prenomCli=verifierDonne($_POST['prenomCli']);
 	$emailCli=verifierDonne($_POST['emailCli']);
@@ -24,30 +24,30 @@ if(isset($_GET['inscription']) && $_POST['passCli']==$_POST['passCliConf'] ){
 	$req1=$bdd->requetes($reqListe,array($telCli)); // la class bdd est definie dans dossier administration
 	$donnee1=$req1->fetch();
 	
-	if(!empty($donnee1['tel_cli'])){
+		if(!empty($donnee1['tel_cli'])){
 
-		//$_SESSION['inscription']="Le numéro a été déja utilisés pour une inscription sur ce  site.";
-		$_SESSION['connexionEchouer']="Le numéro a été déja utilisés pour une inscription sur ce  site.";
+			//$_SESSION['inscription']="Le numéro a été déja utilisés pour une inscription sur ce  site.";
+			$_SESSION['connexionEchouer']="Le numéro a été déja utilisés pour une inscription sur ce  site.";
+			
+			header('location:../view/client.php');
+		}else{
+
+			$reqCli='INSERT INTO clients(nom_cli, prenom_cli, email_cli, pass_cli, adresse_cli, tel_cli, date_inscription)
+					VALUES(:nom, :prenom, :email, :pass, :adresse, :tel, NOW())';
+			$varCli=array(
+				'nom'=>$nomCli,
+				'prenom'=>$prenomCli,
+				'email'=>$emailCli,
+				'pass'=>$passCli,
+				'adresse'=>$adresseCli,
+				'tel'=>$telCli);
 		
+			$bdd->requetes($reqCli,$varCli);
+		
+			$_SESSION['inscription']="Votre inscription a bien été prise en compte, vous pouvez vous connecter";
+			$_SESSION['connexionEchouer']="";
 		header('location:../view/client.php');
-	}else{
-
-		$reqCli='INSERT INTO clients(nom_cli, prenom_cli, email_cli, pass_cli, adresse_cli, tel_cli, date_inscription)
-				VALUES(:nom, :prenom, :email, :pass, :adresse, :tel, NOW())';
-		$varCli=array(
-			'nom'=>$nomCli,
-			'prenom'=>$prenomCli,
-			'email'=>$emailCli,
-			'pass'=>$passCli,
-			'adresse'=>$adresseCli,
-			'tel'=>$telCli);
-	
-		$bdd->requetes($reqCli,$varCli);
-	
-		$_SESSION['inscription']="Votre inscription a bien été prise en compte, vous pouvez vous connecter";
-		$_SESSION['connexionEchouer']="";
-	header('location:../view/client.php');
-	}
+		}
 	}else{
 		$_SESSION['connexionEchouer']="Votre inscription n'a pas été prise en compte: Le numero n'est pas au bon format en Côte d'Ivoire";
 		
