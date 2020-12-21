@@ -1,17 +1,19 @@
 
-.corp{
-	width:100%;
+.corps{
+	margin:auto;
+	max-width:1200px;
 	height:auto;
+	border: 1px solid black;
 	
 }
 
 /*************************La partie header************************************************/
 header > div{
-	height:100px;
+	min-height:100px;
 }
 header{
 	text-align:center;
-	margin-bottom:10px;
+	/*margin-bottom:10px;*/
 	background-color:rgba(0,200,0,0.2);
 }
 #nav{
@@ -41,8 +43,10 @@ li:hover > ul{
 nav div div ul li:hover{
 	background-color:orange;
 	font-weight:bold;
+
 }
-nav div div ul li{
+nav div div ul li ul li a{
+	
 	font-weight:bold;
 	color:black;
 }
@@ -50,7 +54,7 @@ nav div div ul li{
 
 /**********************La partie section********************************/
 section >div >div{
-	height:300px;
+	height:250px;
 }
 .pouletPret div{
 	height:100px;
@@ -114,7 +118,7 @@ footer table thead th{
 /**********************La partie poulets de chair morts***************************************/
 
 .pouletMortChair .image{
-	max-height:150px;
+	max-height:auto;
 	border:1px inset green;
 	border-bottom:none;
 }
@@ -122,26 +126,26 @@ legend{
 	margin-left:10px;
 	margin-top:20px;
 }
-.pouletMortChair .PCongele .prix{
+.pouletMortChair .PCongele .prix, .section .PCongele .prix{
 	font-size:125%;
 	text-align:center;
 	color:red;
 	height:auto;
 	background-color:rgba(0,255,0,0.5);
 	margin-bottom:10px;
+	z-index:2;
 }
 .pouletMortChair .PCongele .prix .ajoutPanier, .voirProduit .Ajouter .ajoutPanier{
 	font-weight:bold;
-	height:30;
+	height:30px;
 }
 /***********************La partie oeufs**************************/
 .oeufs{
 	margin:10px;
 }
-.oeufs .image{
-	
+/*.oeufs .image{
 	max-height:160px;
-}
+}*/
 .oeufs .cartonPrix{
 	text-align:center;
 	height:50px;
@@ -150,11 +154,12 @@ legend{
 	height:auto;
 }
 
-/**************************La partie poussins*****************************/
+/**************************La partie poissons*****************************/
 
 .poussins .poussinsImage{
 	height:160px;
 }
+
 .poussins .prix{
 	height:50px;
 	margin-bottom:20px;
@@ -205,12 +210,12 @@ table.facture tfoot {
 			height:auto;
 		}
 		
-		.voirProduit div{
+		/*.voirProduit div{
 			border:1px solid black;
-		}
+		}*/
 		
 		.voirProduit .voirImage, .voirProduit .voirDescript{
-			height:300px;
+			height:auto;
 		}
 		
 		.voirProduit .Ajouter, .voirProduit .Retour{
@@ -272,19 +277,26 @@ input {
 
 
 /********************************La partie responsive***************************/
-
-@media screen and (max-width:500px){
+@media screen and (max-width:400px){
+	.titre{
+		font-size:25px;
+		display:online-block;
+	}
 	.pouletsDeChairsMorts .image, .oeufs .image, .poussins .poussinsImage, section .produit{
 		max-height:200px;
 	}
 	img{
 	border-radius:20%;
+	max-height:300px;
 		}
 	section .slidee{
 	height:200px;
 		}
+	section >div >div{
+	height:150px;
+}
 	.sociaux{
-		height:60px;
+		height:70px;
 	}
 	#nav{
 	position:sticky;
@@ -300,7 +312,42 @@ input {
 		font-weight:bold;
 	}
 }
-@media screen and (max-width:700px){
+
+@media screen and (min-width:400px) and (max-width:500px){
+	.pouletsDeChairsMorts .image, .oeufs .image, .poussins .poussinsImage, section .produit{
+		max-height:200px;
+	}
+	img{
+	border-radius:20%;
+	max-height:300px;
+		}
+	section .slidee{
+	height:200px;
+		}
+	section >div >div{
+	height:190px;
+}
+	section div #accueilPrix{
+		max-height:200px;
+	}
+	.sociaux{
+		height:70px;
+	}
+	#nav{
+	position:sticky;
+	top:0px;
+	z-index:10;
+	}
+	#total{
+		color:red;
+	}
+	.PCongele .ajoutAuPanier{
+		font-size:11px;
+		color:white;
+		font-weight:bold;
+	}
+}
+@media screen and (min-width:500px) and (max-width:700px){
 	.sociaux{
 		height:50px;
 	}
@@ -308,19 +355,19 @@ input {
 
 @media screen and (min-width:500px){
 	.pouletsDeChairsMorts .image, .oeufs .image, .poussins .poussinsImage, .section > .differentsProduits > a .produit{
-		min-height:180px;
+		min-height:auto;
 	}
 	
 	.corp{
 		margin:auto;
-		max-width:850px;
+		max-width:1100px;
 		border:1px solid black;
 	}
 }
 
 @media screen and (min-width:993px){
 	.section > .differentsProduits > a .produit{
-		max-height:120px;
+		height:auto;
 	}
 	.differentsProduits .description{
 		height:50px;
